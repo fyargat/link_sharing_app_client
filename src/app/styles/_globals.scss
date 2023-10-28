@@ -1,0 +1,43 @@
+@import '@/src/shared/styles/mixins';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  position: relative;
+
+  overflow: hidden;
+
+  font: var(--font-body-md);
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-light-grey);
+
+  background-color: var(--color-white-pri);
+}
+
+h1 {
+  margin: 0;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+button,
+a {
+  font: inherit;
+  color: inherit;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}

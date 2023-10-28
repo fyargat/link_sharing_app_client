@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "command": "yarn dev",
+      "problemMatcher": [],
+      "label": "Dev",
+      "detail": "yarn dev"
+    },
+    {
+      "type": "shell",
+      "command": "yarn storybook",
+      "problemMatcher": [],
+      "label": "Storybook",
+      "detail": "yarn storybook"
+    }
+  ]
+}

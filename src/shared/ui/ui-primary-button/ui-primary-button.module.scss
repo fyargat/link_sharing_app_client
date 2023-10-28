@@ -1,0 +1,28 @@
+@import '@/src/shared/styles/mixins';
+
+.button {
+  @include flex-center;
+
+  cursor: pointer;
+
+  gap: 8px;
+
+  min-width: 3.25rem;
+  min-height: 2.875rem;
+  padding-inline: 1.75rem;
+
+  font: var(--font-head-sm);
+  color: var(--color-purple-primary);
+
+  border: 1px solid var(--color-purple-primary);
+  border-radius: var(--border-radius);
+
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    background-color: var(--color-purple-secondary);
+    box-shadow: 0 0 32px var(--color-purple-shadow);
+  }
+}
