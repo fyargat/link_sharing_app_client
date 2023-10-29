@@ -1,0 +1,46 @@
+@import '@/src/shared/styles/mixins';
+
+.link {
+  cursor: pointer;
+
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 15rem;
+  min-height: 2.75rem;
+  padding: 1rem;
+
+  color: var(--color-white-primary);
+
+  background-color: rgb(26 26 26);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+
+  &WithBorder {
+    border-color: var(--color-border);
+  }
+}
+
+.left {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.icon {
+  @include flex-center;
+
+  width: 20px;
+  height: 20px;
+}
+
+.text {
+  font-size: 0.875rem;
+}
+
+.arrow {
+  @include flex-center;
+}

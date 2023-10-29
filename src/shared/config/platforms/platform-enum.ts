@@ -1,0 +1,16 @@
+export enum Platform {
+  Github,
+  FrontendMentor,
+  Twitter,
+  FreeCodeCamp,
+  LinkedIn,
+  Youtube,
+  Facebook,
+  Twitch,
+  DevTo,
+  Codewars,
+  Codepen,
+  Gitlab,
+  Hashnode,
+  StackOverflow,
+}
