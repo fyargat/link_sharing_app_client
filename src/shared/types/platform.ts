@@ -1,4 +1,4 @@
-import { Platform } from './platform-enum';
+import { Platform } from '../config/platforms/platform-enum';
 
 export interface IPlatformColor {
   color: string;

@@ -1,5 +1,5 @@
+import { IPlatformColor } from '../../types/platform';
 import { Platform } from './platform-enum';
-import { IPlatformColor } from './types';
 
 export const PLATFORM_COLORS: { [key in Platform]: IPlatformColor } = {
   [Platform.Github]: {

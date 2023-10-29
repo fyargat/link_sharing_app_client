@@ -20,18 +20,18 @@ type Story = StoryObj<typeof meta>;
 
 export const Base: Story = {
   args: {
-    platform: PLATFORMS[0],
+    link: { platform: PLATFORMS[0], href: '' },
   },
 };
 
 export const FrontedMentor: Story = {
   args: {
-    platform: PLATFORMS[1],
+    link: { platform: PLATFORMS[1], href: '' },
   },
 };
 
 export const StackOverflow: Story = {
   args: {
-    platform: platformMap.get(Platform.StackOverflow)!,
+    link: { platform: platformMap.get(Platform.StackOverflow)!, href: '' },
   },
 };

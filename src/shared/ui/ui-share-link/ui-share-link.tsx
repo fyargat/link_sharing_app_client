@@ -2,18 +2,19 @@ import cn from 'classnames';
 import { FC } from 'react';
 
 import { ICONS } from '../../config/icons';
-import { IPlatform } from '../../config/platforms';
+import { ILink } from '../../types';
 import styles from './ui-share-link.module.scss';
 
 interface IProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  platform: IPlatform;
+  link: ILink;
 }
 
-export const UIShareLink: FC<IProps> = ({ platform, ...props }) => {
-  const { colors, text, icon } = platform;
+export const UIShareLink: FC<IProps> = ({ link, ...props }) => {
+  const { colors, text, icon } = link.platform;
 
   return (
     <a
+      href={link.href}
       className={cn(styles.link, {
         [styles.linkWithBorder]: colors?.hasBorder,
       })}

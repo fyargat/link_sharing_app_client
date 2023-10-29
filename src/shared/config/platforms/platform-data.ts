@@ -1,7 +1,7 @@
+import { IPlatform } from '../../types/platform';
 import { PLATFORM_COLORS } from './platform-colors';
 import { Platform } from './platform-enum';
 import { PLATFORM_ICONS } from './platform-icons';
-import { IPlatform } from './types';
 
 export const PLATFORMS: IPlatform[] = [
   {
