@@ -6,7 +6,7 @@ interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
 }
 
-export const UiSecondaryButton: FC<IProps> = ({ text, ...props }) => {
+export const UISecondaryButton: FC<IProps> = ({ text, ...props }) => {
   return (
     <button className={styles.button} {...props}>
       {text}

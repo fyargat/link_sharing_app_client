@@ -1,0 +1,84 @@
+@import '@/src/shared/styles/mixins';
+
+label {
+  @include flex-column;
+
+  gap: 0.5rem;
+}
+
+.label {
+  font: var(--font-body-sm);
+  color: var(--color-dark-grey);
+}
+
+.inputContainer {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+
+  width: 1rem;
+  height: 1rem;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 3rem;
+  padding-left: 2.75rem;
+
+  font: var(--font-body-md);
+  color: var(--color-dark-grey);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  caret-color: var(--color-purple-primary);
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &::placeholder {
+    color: var(--color-light-grey);
+  }
+
+  &:is(&:focus, &:hover) {
+    border-color: var(--color-purple-primary);
+    box-shadow: 0 0 32px var(--color-purple-shadow);
+  }
+
+  &Invalid {
+    border-color: var(--color-red);
+
+    &::placeholder {
+      @include breakpoint(mobile) {
+        color: var(--color-light-grey);
+      }
+
+      color: transparent;
+    }
+
+    &:is(&:focus, &:hover) {
+      border-color: var(--color-red);
+    }
+  }
+}
+
+.errorText {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+
+  font: var(--font-body-sm);
+  color: var(--color-red);
+}

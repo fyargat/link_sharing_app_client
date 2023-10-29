@@ -1,14 +1,14 @@
-import { UiSecondaryButton } from '@/src/shared/ui/ui-secondary-button';
+import { UISecondaryButton } from '@/src/shared/ui/ui-secondary-button';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
   title: 'UI/SecondaryButton',
-  component: UiSecondaryButton,
+  component: UISecondaryButton,
   parameters: {},
   tags: ['autodocs'],
   args: { text: 'Save' },
   argTypes: { onClick: { action: 'clicked' } },
-} satisfies Meta<typeof UiSecondaryButton>;
+} satisfies Meta<typeof UISecondaryButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
