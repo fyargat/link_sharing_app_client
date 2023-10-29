@@ -1,0 +1,117 @@
+@import '@/src/shared/styles/mixins';
+
+.container {
+}
+
+.label {
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.select {
+  position: relative;
+}
+
+.button {
+  cursor: pointer;
+
+  position: relative;
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 3rem;
+  padding-left: 2.75rem;
+
+  font: var(--font-body-md);
+  color: var(--color-dark-grey);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+
+  transition: 0.3s ease;
+
+  &:is(&:focus, &:hover) {
+    border-color: var(--color-purple-primary);
+    box-shadow: 0 0 32px var(--color-purple-shadow);
+  }
+}
+
+.icon {
+  @include flex-center;
+
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+}
+
+.arrow {
+  @include flex-center;
+
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+
+  transition: transform 0.1s ease;
+
+  &Rotate {
+    transform: translateY(-50%) rotate(180deg);
+  }
+}
+
+.list {
+  position: absolute;
+  z-index: 2;
+  top: calc(100% + 1.5rem);
+
+  overflow: hidden;
+  overflow-y: auto;
+
+  width: 100%;
+  max-height: 19.25rem;
+
+  // height: 0;
+  padding-inline: 16px;
+
+  background-color: var(--color-white-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 32px #0000001a;
+
+  transition: height 0.3s ease;
+}
+
+.item {
+  &:not(:last-of-type) {
+    border-bottom: 1px solid var(--color-border);
+  }
+}
+
+.option {
+  cursor: pointer;
+
+  display: flex;
+  gap: 0.75rem;
+  align-items: unset;
+
+  width: 100%;
+  padding-block: 0.75rem;
+
+  &Text {
+    font: var(--font-body-md);
+    line-height: 1.25rem;
+  }
+
+  &Icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &:hover {
+    color: var(--color-purple-primary);
+  }
+}
