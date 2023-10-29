@@ -4,6 +4,12 @@
   @include flex-column;
 
   gap: 0.5rem;
+
+  &Row {
+    flex-direction: row;
+    gap: 3rem;
+    align-items: center;
+  }
 }
 
 .labelText {
@@ -13,10 +19,15 @@
   &Invalid {
     color: var(--color-red);
   }
+
+  &Row {
+    font-size: 1rem;
+  }
 }
 
 .inputContainer {
   position: relative;
+  width: 100%;
 }
 
 .icon {

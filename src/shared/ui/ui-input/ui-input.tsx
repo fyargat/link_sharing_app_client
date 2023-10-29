@@ -3,11 +3,16 @@ import { FC } from 'react';
 
 import styles from './ui-input.module.scss';
 
+export enum Direction {
+  Column = 'column',
+  Row = 'row',
+}
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   icon: React.ReactNode;
   isInvalid: boolean;
   errorText: string;
+  direction?: Direction;
 }
 
 export const UIInput: FC<IProps> = ({
@@ -15,15 +20,21 @@ export const UIInput: FC<IProps> = ({
   errorText,
   label,
   icon,
+  direction = Direction.Column,
   ...props
 }) => {
   return (
     <div className={styles.container}>
-      <label className={styles.label}>
+      <label
+        className={cn(styles.label, {
+          [styles.labelRow]: direction === Direction.Row,
+        })}
+      >
         {label && (
           <p
             className={cn(styles.labelText, {
               [styles.labelTextInvalid]: isInvalid,
+              [styles.labelTextRow]: direction === Direction.Row,
             })}
           >
             {label}

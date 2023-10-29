@@ -1,5 +1,5 @@
 import { ICONS } from '@/src/shared/config/icons';
-import { UIInput } from '@/src/shared/ui/ui-input';
+import { Direction, UIInput } from '@/src/shared/ui/ui-input';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
@@ -42,6 +42,27 @@ export const Link: Story = {
     label: 'Link',
     icon: ICONS['link'],
     errorText: "Can't be empty",
+  },
+};
+
+export const RowDirection: Story = {
+  args: {
+    placeholder: 'e.g. https://github.com/test',
+    label: 'Link',
+    icon: ICONS['link'],
+    errorText: "Can't be empty",
+    direction: Direction.Row,
+  },
+};
+
+export const RowDirectionWithInvalid: Story = {
+  args: {
+    placeholder: 'e.g. https://github.com/test',
+    label: 'Link',
+    icon: ICONS['link'],
+    errorText: "Can't be empty",
+    direction: Direction.Row,
+    isInvalid: true,
   },
 };
 
