@@ -19,8 +19,16 @@ export const UIInput: FC<IProps> = ({
 }) => {
   return (
     <div className={styles.container}>
-      <label>
-        {label && <p className={styles.label}>{label}</p>}
+      <label className={styles.label}>
+        {label && (
+          <p
+            className={cn(styles.labelText, {
+              [styles.labelTextInvalid]: isInvalid,
+            })}
+          >
+            {label}
+          </p>
+        )}
 
         <div className={styles.inputContainer}>
           <div className={styles.icon}>{icon}</div>

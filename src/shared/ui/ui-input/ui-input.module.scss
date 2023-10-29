@@ -1,14 +1,18 @@
 @import '@/src/shared/styles/mixins';
 
-label {
+.label {
   @include flex-column;
 
   gap: 0.5rem;
 }
 
-.label {
+.labelText {
   font: var(--font-body-sm);
   color: var(--color-dark-grey);
+
+  &Invalid {
+    color: var(--color-red);
+  }
 }
 
 .inputContainer {
