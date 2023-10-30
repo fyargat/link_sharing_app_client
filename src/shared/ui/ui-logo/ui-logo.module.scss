@@ -1,0 +1,13 @@
+@import '@/src/shared/styles/mixins';
+
+.container {
+  &Short {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &Full {
+    max-width: 183px;
+    min-height: 40px;
+  }
+}
