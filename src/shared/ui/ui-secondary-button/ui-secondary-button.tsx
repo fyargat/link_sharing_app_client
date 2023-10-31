@@ -1,15 +1,15 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
 import styles from './ui-secondary-button.module.scss';
 
-interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  text: string;
-}
+interface IProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    PropsWithChildren {}
 
-export const UISecondaryButton: FC<IProps> = ({ text, ...props }) => {
+export const UISecondaryButton: FC<IProps> = ({ children, ...props }) => {
   return (
     <button className={styles.button} {...props}>
-      {text}
+      {children}
     </button>
   );
 };

@@ -6,7 +6,7 @@ const meta = {
   component: UIPrimaryButton,
   parameters: {},
   tags: ['autodocs'],
-  args: { text: 'Button' },
+  args: { children: 'Button' },
   argTypes: { onClick: { action: 'clicked' } },
 } satisfies Meta<typeof UIPrimaryButton>;
 
@@ -17,6 +17,6 @@ export const Primary: Story = {};
 
 export const LongName: Story = {
   args: {
-    text: 'Long Name Long Name Long Name Long Name',
+    children: 'Long Name Long Name Long Name Long Name',
   },
 };
