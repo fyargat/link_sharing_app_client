@@ -1,0 +1,33 @@
+@import '@/src/shared/styles/mixins';
+
+.container {
+  @include flex-column;
+
+  gap: 5rem;
+  min-height: 100vh;
+  padding-bottom: 1rem;
+}
+
+.main {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.section {
+  &Left {
+    position: sticky;
+    top: 1rem;
+
+    display: flex;
+    flex: 2;
+    justify-content: center;
+
+    max-height: 39.5rem;
+  }
+
+  &Right {
+    flex: 3;
+  }
+}

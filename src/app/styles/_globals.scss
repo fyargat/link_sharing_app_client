@@ -10,7 +10,7 @@ html,
 body {
   position: relative;
 
-  overflow: hidden;
+  // overflow: hidden;
 
   font: var(--font-body-md);
   font-weight: 400;
@@ -56,4 +56,10 @@ svg {
   width: 100%;
   max-width: 100%;
   height: auto;
+}
+
+.wrap {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding-inline: 1rem;
 }

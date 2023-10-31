@@ -10,10 +10,10 @@ interface IProps {
 
 export const UIHeader: FC<IProps> = ({ center, right }) => {
   return (
-    <div className={styles.container}>
+    <header className={styles.container}>
       <UILogo />
       {center}
       {right}
-    </div>
+    </header>
   );
 };

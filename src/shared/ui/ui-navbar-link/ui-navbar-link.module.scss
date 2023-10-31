@@ -15,9 +15,16 @@
   background-color: transparent;
   border-radius: var(--border-radius);
 
-  transition: 0.2s ease;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    color: var(--color-purple-primary);
+  }
 
   &Active {
+    pointer-events: none;
     color: var(--color-purple-primary);
     background-color: var(--color-purple-tertiary);
   }
