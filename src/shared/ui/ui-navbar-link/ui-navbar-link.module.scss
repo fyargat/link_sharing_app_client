@@ -1,0 +1,29 @@
+@import '@/src/shared/styles/mixins';
+
+.link {
+  @include flex-center;
+
+  gap: 0.5rem;
+
+  min-width: 4.625rem;
+  min-height: 2.875rem;
+  padding-inline: 1.6875rem;
+
+  font: var(--font-head-sm);
+  color: var(--color-light-grey);
+
+  background-color: transparent;
+  border-radius: var(--border-radius);
+
+  transition: 0.2s ease;
+
+  &Active {
+    color: var(--color-purple-primary);
+    background-color: var(--color-purple-tertiary);
+  }
+}
+
+.icon {
+  width: 1.3125rem;
+  height: 1.25rem;
+}
