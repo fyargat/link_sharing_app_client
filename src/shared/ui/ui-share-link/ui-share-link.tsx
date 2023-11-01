@@ -2,11 +2,11 @@ import cn from 'classnames';
 import { FC } from 'react';
 
 import { ICONS } from '../../config/icons';
-import { ILink } from '../../types';
+import { IShareLink } from '../../types';
 import styles from './ui-share-link.module.scss';
 
 interface IProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  link: ILink;
+  link: IShareLink;
 }
 
 export const UIShareLink: FC<IProps> = ({ link, ...props }) => {
