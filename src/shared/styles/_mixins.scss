@@ -68,3 +68,11 @@
     box-shadow: 0 0 32px var(--color-purple-shadow);
   }
 }
+
+@mixin title {
+  font:
+    700 1.5rem/150% 'Instrument Sans',
+    Arial,
+    sans-serif;
+  color: var(--color-dark-grey);
+}
