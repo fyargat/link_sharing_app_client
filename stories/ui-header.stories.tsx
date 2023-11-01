@@ -1,6 +1,6 @@
+import { UINavbar } from '@/src/features/navbar';
 import { Route } from '@/src/shared/config/routes';
 import { UIHeader } from '@/src/shared/ui/ui-header';
-import { UINavbar } from '@/src/shared/ui/ui-navbar';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const Center = () => <p>Center</p>;

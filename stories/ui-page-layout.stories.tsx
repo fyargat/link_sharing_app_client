@@ -1,9 +1,10 @@
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { UINavbar } from '@/src/features/navbar';
+import { UIPhoneTemplate } from '@/src/features/phone-template';
 import { Route } from '@/src/shared/config/routes';
 import { UIPageLayout } from '@/src/shared/ui/layouts/ui-page-layout';
 import { UIHeader } from '@/src/shared/ui/ui-header';
-import { UINavbar } from '@/src/shared/ui/ui-navbar';
-import { UIPhoneTemplate } from '@/src/shared/ui/ui-phone-template';
-import type { Meta, StoryObj } from '@storybook/react';
 
 const RightBlock = () => {
   return (
@@ -46,7 +47,17 @@ export const Primary: Story = {
     header: (
       <UIHeader center={<UINavbar route={Route.Home} />} right={<p>Right</p>} />
     ),
-    left: <UIPhoneTemplate links={[]} avatar={''} email={''} fullName={''} />,
+    left: (
+      <UIPhoneTemplate
+        links={[]}
+        user={{
+          avatar: '',
+          email: '',
+          fullName: '',
+        }}
+        linkSkeletons={Array(5).fill('_')}
+      />
+    ),
     right: <RightBlock />,
   },
 };
