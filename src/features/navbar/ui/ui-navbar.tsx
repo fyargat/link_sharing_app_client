@@ -1,12 +1,14 @@
+'use client';
+
+import { ICONS } from '@/src/shared/config/icons';
+import { Route } from '@/src/shared/config/routes';
+import { UINavbarLink } from '@/src/shared/ui/ui-navbar-link';
 import { FC } from 'react';
 
-import { ICONS } from '../../config/icons';
-import { Route } from '../../config/routes';
-import { UINavbarLink } from '../ui-navbar-link';
 import styles from './ui-navbar.module.scss';
 
 interface IProps {
-  route: Route;
+  route: Route | null;
 }
 
 export const UINavbar: FC<IProps> = ({ route }) => {

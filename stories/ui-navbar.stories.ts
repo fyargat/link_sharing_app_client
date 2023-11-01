@@ -1,5 +1,5 @@
+import { UINavbar } from '@/src/features/navbar';
 import { Route } from '@/src/shared/config/routes';
-import { UINavbar } from '@/src/shared/ui/ui-navbar';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
