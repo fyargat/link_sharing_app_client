@@ -1,9 +1,10 @@
-import { Platform, platformMap } from '@/src/shared/config/platforms';
-import { ILink } from '@/src/shared/types';
-import { UIPhoneTemplate } from '@/src/shared/ui/ui-phone-template';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const links: ILink[] = [
+import { UIPhoneTemplate } from '@/src/features/phone-template';
+import { Platform, platformMap } from '@/src/shared/config/platforms';
+import { IShareLink } from '@/src/shared/types';
+
+const links: IShareLink[] = [
   {
     platform: platformMap.get(Platform.Facebook)!,
     href: 'https://facebook.com/test',
@@ -34,16 +35,23 @@ const links: ILink[] = [
   },
 ];
 
+const user = {
+  avatar: '',
+  email: '',
+  fullName: '',
+};
+
+const linkSkeletons = Array(5).fill('_');
+
 const meta = {
   title: 'UI/PhoneTemplate',
   component: UIPhoneTemplate,
   parameters: {},
   tags: ['autodocs'],
   args: {
-    avatar: null,
-    email: null,
-    fullName: null,
+    user,
     links: [],
+    linkSkeletons,
   },
   argTypes: {},
 } satisfies Meta<typeof UIPhoneTemplate>;
@@ -54,49 +62,67 @@ type Story = StoryObj<typeof meta>;
 export const Base: Story = {
   args: {
     links: links.slice(0, 3),
+    linkSkeletons: linkSkeletons.slice(0, 2),
   },
 };
 
 export const WithAvatar: Story = {
   args: {
-    avatar:
-      'https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png',
+    user: {
+      ...user,
+      avatar:
+        'https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png',
+    },
   },
 };
 
 export const WithEmail: Story = {
   args: {
-    email: 'test@test.com',
+    user: {
+      ...user,
+      email: 'test@test.com',
+    },
   },
 };
 
 export const WithLongEmail: Story = {
   args: {
-    email:
-      'test-test-test-test-test-test-test-test-test-test-test-test-test@test.com',
+    user: {
+      ...user,
+      email:
+        'test-test-test-test-test-test-test-test-test-test-test-test-test@test.com',
+    },
   },
 };
 
 export const WithFullName: Story = {
   args: {
-    fullName: 'John Doe',
+    user: {
+      ...user,
+      fullName: 'John Doe',
+    },
   },
 };
 
 export const WithLongFullName: Story = {
   args: {
-    fullName:
-      'John Doe John Doe John Doe John Doe John Doe John Doe John Doe John Doe',
+    user: {
+      ...user,
+      fullName:
+        'John Doe John Doe John Doe John Doe John Doe John Doe John Doe John Doe',
+    },
   },
 };
 
 export const FullInfo: Story = {
   args: {
     links: links.slice(0, 5),
-    avatar:
-      'https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png',
-    email: 'test@test.com',
-    fullName: 'John Doe',
+    user: {
+      avatar:
+        'https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png',
+      email: 'test@test.com',
+      fullName: 'John Doe',
+    },
   },
 };
 
@@ -109,11 +135,13 @@ export const MinLinks: Story = {
 export const MaxLinks: Story = {
   args: {
     links: links.slice(0, 5),
+    linkSkeletons: [],
   },
 };
 
 export const MoreLinks: Story = {
   args: {
     links,
+    linkSkeletons: [],
   },
 };

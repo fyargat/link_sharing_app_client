@@ -1,0 +1,100 @@
+@import '@/src/shared/styles/mixins';
+
+.container {
+  @include flex-column;
+
+  overflow: hidden;
+  gap: 2rem;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 19.25rem;
+  height: 39.5rem;
+  padding: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzA4IiBoZWlnaHQ9IjYzMiIgdmlld0JveD0iMCAwIDMwOCA2MzIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF8xXzIpIj4KPHBhdGggZD0iTTEgNTQuNUMxIDI0Ljk1MyAyNC45NTMgMSA1NC41IDFIMjUzLjVDMjgzLjA0NyAxIDMwNyAyNC45NTMgMzA3IDU0LjVWNTc3LjVDMzA3IDYwNy4wNDcgMjgzLjA0NyA2MzEgMjUzLjUgNjMxSDU0LjVDMjQuOTUzIDYzMSAxIDYwNy4wNDcgMSA1NzcuNVY1NC41WiIgc3Ryb2tlPSIjNjMzQ0ZGIi8+CjxwYXRoIGQ9Ik0xMiA1NS41QzEyIDMwLjkyMyAzMS45MjMgMTEgNTYuNSAxMUg4MC41Qzg2Ljg1MSAxMSA5MiAxNi4xNDkgOTIgMjIuNUM5MiAzMC41MDggOTguNDkyIDM3IDEwNi41IDM3SDIwMS41QzIwOS41MDggMzcgMjE2IDMwLjUwOCAyMTYgMjIuNUMyMTYgMTYuMTQ5IDIyMS4xNDkgMTEgMjI3LjUgMTFIMjUxLjVDMjc2LjA3NyAxMSAyOTYgMzAuOTIzIDI5NiA1NS41VjU3Ni41QzI5NiA2MDEuMDc3IDI3Ni4wNzcgNjIxIDI1MS41IDYyMUg1Ni41QzMxLjkyMyA2MjEgMTIgNjAxLjA3NyAxMiA1NzYuNVY1NS41WiIgc3Ryb2tlPSIjNjMzQ0ZGIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMV8yIj4KPHJlY3Qgd2lkdGg9IjMwOCIgaGVpZ2h0PSI2MzIiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.header {
+  @include flex-column;
+
+  gap: 1rem;
+}
+
+.avatar {
+  overflow: hidden;
+
+  width: 6.25rem;
+  height: 6.25rem;
+  margin: 0 auto;
+
+  border-radius: 50%;
+}
+
+.userInfo {
+  @include flex-column;
+
+  gap: 0.5rem;
+}
+
+:is(.fullName, .email) {
+  @include truncate;
+
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.fullName {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.email {
+  font-size: 0.875rem;
+}
+
+.skeleton {
+  &Avatar {
+    width: 6.25rem;
+    height: 6.25rem;
+    margin: 0 auto;
+    border-radius: 50%;
+  }
+
+  &FullName {
+    min-width: 10rem;
+    height: 1rem;
+    margin: 0 auto;
+    border-radius: 1rem;
+  }
+
+  &Email {
+    min-width: 5rem;
+    height: 0.75rem;
+    margin: 0 auto;
+    border-radius: 1rem;
+  }
+
+  &Link {
+    width: 100%;
+    min-height: 2.75rem;
+    border-radius: var(--border-radius);
+  }
+}
+
+.body {
+  overflow: hidden;
+
+  // overflow-y: auto;
+  max-height: 18.75rem;
+}
+
+.list {
+  @include flex-column;
+
+  gap: 1.25rem;
+}
