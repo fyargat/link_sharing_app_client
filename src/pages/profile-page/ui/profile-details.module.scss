@@ -1,0 +1,14 @@
+@import '@/src/shared/styles/mixins';
+
+.container {
+}
+
+.header {
+}
+
+.title {
+  @include title;
+}
+
+.subtitle {
+}
