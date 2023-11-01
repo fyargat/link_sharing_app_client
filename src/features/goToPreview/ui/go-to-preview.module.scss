@@ -1,0 +1,5 @@
+@import '@/src/shared/styles/mixins';
+
+.link {
+  @include primary-button;
+}
