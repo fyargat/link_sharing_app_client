@@ -1,0 +1,33 @@
+@import '@/src/shared/styles/mixins';
+
+.container {
+  @include flex-column;
+
+  @include breakpoint(mobile) {
+    max-width: 25rem;
+  }
+
+  gap: 1.5rem;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.icon {
+  @include flex-center;
+
+  width: 7.8125rem;
+  height: 5rem;
+}
+
+.title {
+  font:
+    700 1.5rem/150% 'Instrument Sans',
+    Arial,
+    sans-serif;
+  color: var(--color-dark-grey);
+  text-align: center;
+}
+
+.text {
+  text-align: justify;
+}

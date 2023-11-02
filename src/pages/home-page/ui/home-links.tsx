@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { ShareLinkList } from '@/src/features/share-link/list';
+
 import styles from './home-links.module.scss';
 
 interface IProps {}
@@ -14,6 +16,7 @@ export const HomeLinks: FC<IProps> = () => {
           world!
         </p>
       </header>
+      <ShareLinkList />
     </div>
   );
 };
