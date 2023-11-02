@@ -1,11 +1,9 @@
 @import '@/src/shared/styles/mixins';
 
-.container {
-}
-
 .label {
   margin-bottom: 0.5rem;
   font-size: 0.75rem;
+  color: var(--color-dark-grey);
 }
 
 .select {

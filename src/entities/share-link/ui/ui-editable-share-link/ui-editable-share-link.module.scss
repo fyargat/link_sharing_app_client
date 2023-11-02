@@ -1,0 +1,47 @@
+@import '@/src/shared/styles/mixins';
+
+.container {
+  @include flex-column;
+
+  gap: 0.75rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.draggableButton {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.dashes {
+  @include flex-center;
+
+  width: 0.75rem;
+  height: 0.375rem;
+}
+
+.title {
+  position: relative;
+  font: var(--font-head-sm);
+}
+
+.removeButton {
+  font: var(--font-body-md);
+  color: var(--color-light-grey);
+  transition: filter 0.3s ease;
+
+  &:hover {
+    filter: opacity(50%);
+  }
+}
+
+.body {
+  @include flex-column;
+
+  gap: 0.75rem;
+}
