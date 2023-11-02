@@ -1,6 +1,10 @@
 @import '@/src/shared/styles/mixins';
 
-.container {
+.list {
   display: flex;
   align-items: center;
+}
+
+.previewLink {
+  @include primary-button;
 }
