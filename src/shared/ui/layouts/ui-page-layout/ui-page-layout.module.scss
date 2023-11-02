@@ -17,14 +17,18 @@
 
 .section {
   &Left {
-    position: sticky;
-    top: 1rem;
+    @include breakpoint(laptop) {
+      position: sticky;
+      top: 1rem;
 
-    display: flex;
-    flex: 2;
-    justify-content: center;
+      display: flex;
+      flex: 2;
+      justify-content: center;
 
-    max-height: 39.5rem;
+      max-height: 39.5rem;
+    }
+
+    display: none;
   }
 
   &Right {
