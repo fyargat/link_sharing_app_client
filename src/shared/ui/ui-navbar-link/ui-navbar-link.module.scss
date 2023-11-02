@@ -1,13 +1,19 @@
 @import '@/src/shared/styles/mixins';
 
 .link {
+  @include breakpoint(mobile) {
+    min-width: 4.625rem;
+    min-height: 2.875rem;
+    padding-inline: 1.6875rem;
+  }
+
   @include flex-center;
 
   gap: 0.5rem;
 
-  min-width: 4.625rem;
-  min-height: 2.875rem;
-  padding-inline: 1.6875rem;
+  min-width: 3.25rem;
+  min-height: 2.5rem;
+  padding-inline: 1rem;
 
   font: var(--font-head-sm);
   color: var(--color-light-grey);
@@ -31,6 +37,22 @@
 }
 
 .icon {
+  @include breakpoint(mobile) {
+    display: none;
+  }
+
+  @include breakpoint(tablet) {
+    display: block;
+  }
+
   width: 1.3125rem;
   height: 1.25rem;
+}
+
+.text {
+  @include breakpoint(mobile) {
+    display: block;
+  }
+
+  display: none;
 }

@@ -45,13 +45,18 @@
 @mixin primary-button {
   @include flex-center;
 
+  @include breakpoint(mobile) {
+    min-height: 2.875rem;
+    padding-inline: 1.75rem;
+  }
+
   cursor: pointer;
 
   gap: 8px;
 
   min-width: 3.25rem;
-  min-height: 2.875rem;
-  padding-inline: 1.75rem;
+  min-height: 2.5rem;
+  padding-inline: 1rem;
 
   font: var(--font-head-sm);
   color: var(--color-purple-primary);
