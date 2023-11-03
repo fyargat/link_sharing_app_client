@@ -1,7 +1,7 @@
 import { FC, FormEvent } from 'react';
 
 import { UIEditableShareLink } from '@/src/entities/share-link';
-import { IShareLink } from '@/src/shared/types';
+import { IShareLink, ShareLinkId } from '@/src/shared/types';
 import { UIPrimaryButton } from '@/src/shared/ui/ui-primary-button';
 import { UISecondaryButton } from '@/src/shared/ui/ui-secondary-button';
 
@@ -10,15 +10,29 @@ import styles from './ui-share-link-list.module.scss';
 
 interface IProps {
   links: IShareLink[];
+  isCreateButtonDisabled: boolean;
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  onCreate: () => void;
+  onUpdate: (
+    id: ShareLinkId,
+  ) => (prop: string) => (value: string | number) => void;
+  onRemove: (id: ShareLinkId) => () => void;
 }
 
-export const UIShareLinkList: FC<IProps> = ({ links, onSubmit }) => {
+export const UIShareLinkList: FC<IProps> = ({
+  links,
+  onSubmit,
+  onCreate,
+  onUpdate,
+  onRemove,
+  isCreateButtonDisabled,
+}) => {
   return (
     <div className={styles.container}>
       <UIPrimaryButton
         className={styles.addButton}
-        onClick={() => console.log('Add new link')}
+        onClick={onCreate}
+        disabled={isCreateButtonDisabled}
       >
         + Add new link
       </UIPrimaryButton>
@@ -26,9 +40,14 @@ export const UIShareLinkList: FC<IProps> = ({ links, onSubmit }) => {
       {links.length ? (
         <form onSubmit={onSubmit}>
           <ul className={styles.list}>
-            {links.map((v) => (
-              <li key={v.href}>
-                <UIEditableShareLink />
+            {links.map((link, index) => (
+              <li key={link.id}>
+                <UIEditableShareLink
+                  link={link}
+                  order={index}
+                  onUpdate={onUpdate(link.id)}
+                  onRemove={onRemove(link.id)}
+                />
               </li>
             ))}
           </ul>

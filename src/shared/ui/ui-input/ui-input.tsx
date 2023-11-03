@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 
 import styles from './ui-input.module.scss';
 
@@ -13,6 +13,7 @@ interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   isInvalid: boolean;
   errorText: string;
   direction?: Direction;
+  onInputChange: (value: string) => void;
 }
 
 export const UIInput: FC<IProps> = ({
@@ -21,8 +22,14 @@ export const UIInput: FC<IProps> = ({
   label,
   icon,
   direction = Direction.Column,
+  onInputChange,
   ...props
 }) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.trim();
+    onInputChange(value);
+  };
+
   return (
     <div className={styles.container}>
       <label
@@ -48,6 +55,7 @@ export const UIInput: FC<IProps> = ({
               [styles.inputInvalid]: isInvalid,
             })}
             type='text'
+            onChange={handleChange}
             {...props}
           />
           {isInvalid && <p className={styles.errorText}>{errorText}</p>}

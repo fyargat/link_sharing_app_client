@@ -6,7 +6,7 @@ import { UIShareLinkList } from './ui/ui-share-link-list';
 interface IProps {}
 
 export const ShareLinkList: React.FC<IProps> = () => {
-  const { onSubmit, links } = useShareLinkList();
+  const props = useShareLinkList();
 
-  return <UIShareLinkList onSubmit={onSubmit} links={links} />;
+  return <UIShareLinkList {...props} />;
 };

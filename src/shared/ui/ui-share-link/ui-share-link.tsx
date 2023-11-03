@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { FC } from 'react';
 
 import { ICONS } from '../../config/icons';
+import { platformMap } from '../../config/platforms';
 import { IShareLink } from '../../types';
 import styles from './ui-share-link.module.scss';
 
@@ -10,7 +11,7 @@ interface IProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
 }
 
 export const UIShareLink: FC<IProps> = ({ link, ...props }) => {
-  const { colors, text, icon } = link.platform;
+  const { colors, text, icon } = platformMap.get(link.platformId)!;
 
   return (
     <a

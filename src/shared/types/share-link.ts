@@ -1,6 +1,12 @@
-import { IPlatform } from './platform';
+import { Platform } from '../config/platforms';
 
+export type ShareLinkId = string;
 export interface IShareLink {
-  platform: IPlatform;
+  id: ShareLinkId;
+  platformId: Platform;
   href: string;
 }
+
+export type EditableShareLinkPayloadType = Partial<
+  Pick<IShareLink, 'href' | 'platformId'>
+>;

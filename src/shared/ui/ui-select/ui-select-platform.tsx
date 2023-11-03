@@ -2,15 +2,23 @@ import cn from 'classnames';
 import { FC } from 'react';
 
 import { ICONS } from '../../config/icons';
-import { PLATFORMS } from '../../config/platforms';
+import { PLATFORMS, Platform } from '../../config/platforms';
 import { useSelectPlatform } from './ui-select-platform.model';
 import styles from './ui-select-platform.module.scss';
 
-interface IProps {}
+interface IProps {
+  platformId: Platform;
+  onSelectPlatform: (id: Platform) => void;
+}
 
-export const UISelectPlatform: FC<IProps> = () => {
-  const { platform, isVisible, onSelect, onToggleVisible } =
-    useSelectPlatform();
+export const UISelectPlatform: FC<IProps> = ({
+  platformId,
+  onSelectPlatform,
+}) => {
+  const { platform, isVisible, onSelect, onToggleVisible } = useSelectPlatform(
+    platformId,
+    onSelectPlatform,
+  );
 
   return (
     <div className={styles.container}>
