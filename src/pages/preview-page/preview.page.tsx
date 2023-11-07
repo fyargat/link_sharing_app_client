@@ -1,9 +1,7 @@
+import { UIPreviewPage } from './ui/ui-preview-page';
+
 interface IProps {}
 
 export const PreviewPage: React.FC<IProps> = () => {
-  return (
-    <div>
-      <h1>PreviewPage</h1>
-    </div>
-  );
+  return <UIPreviewPage />;
 };
