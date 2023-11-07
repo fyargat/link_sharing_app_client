@@ -1,7 +1,14 @@
 import cn from 'classnames';
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent, FC, FocusEvent } from 'react';
 
 import styles from './ui-input.module.scss';
+
+export interface IInputClassName {
+  input?: string;
+  container?: string;
+  label?: string;
+  labelText?: string;
+}
 
 export enum Direction {
   Column = 'column',
@@ -9,11 +16,13 @@ export enum Direction {
 }
 interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   isInvalid: boolean;
   errorText: string;
   direction?: Direction;
+  isSelectText?: boolean;
   onInputChange: (value: string) => void;
+  classNames?: IInputClassName;
 }
 
 export const UIInput: FC<IProps> = ({
@@ -23,11 +32,19 @@ export const UIInput: FC<IProps> = ({
   icon,
   direction = Direction.Column,
   onInputChange,
+  isSelectText = false,
+  classNames = {},
   ...props
 }) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.trim();
+    const value = e.target.value;
     onInputChange(value);
+  };
+
+  const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
+    if (!isSelectText) return;
+
+    e.target.select();
   };
 
   return (
@@ -42,20 +59,27 @@ export const UIInput: FC<IProps> = ({
             className={cn(styles.labelText, {
               [styles.labelTextInvalid]: isInvalid,
               [styles.labelTextRow]: direction === Direction.Row,
+              [classNames?.labelText as string]: classNames.labelText,
             })}
           >
             {label}
           </p>
         )}
 
-        <div className={styles.inputContainer}>
-          <div className={styles.icon}>{icon}</div>
+        <div
+          className={cn(styles.inputContainer, {
+            [styles.inputContainerRow]: direction === Direction.Row,
+          })}
+        >
+          {icon && <div className={styles.icon}>{icon}</div>}
           <input
             className={cn(styles.input, {
               [styles.inputInvalid]: isInvalid,
+              [classNames?.input as string]: classNames.input,
             })}
             type='text'
             onChange={handleChange}
+            onFocus={handleFocus}
             {...props}
           />
           {isInvalid && <p className={styles.errorText}>{errorText}</p>}

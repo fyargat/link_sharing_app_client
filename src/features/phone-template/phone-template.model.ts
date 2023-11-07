@@ -1,20 +1,20 @@
-import { IShareLink, IUser } from '@/src/shared/types';
+import { useShareLinkStore } from '@/src/entities/share-link';
 
+import { useProfileForm } from '../profile/profile-form.model';
 import { getLinkSkeletons } from './phone-template.lib';
 import { IPhoneTemplateUser } from './phone-template.types';
 
 export const usePhoneTemplate = () => {
-  // temp
-  const user = { avatar: '', firstName: '', lastName: '', email: '' } as IUser;
-  const links = [] as IShareLink[];
+  const { links } = useShareLinkStore();
+  const { firstName, lastName, email, avatar } = useProfileForm();
 
-  const { firstName = '', lastName = '', ...rest } = user;
   const fullName = (firstName + ' ' + lastName).trim();
   const linkSkeletons = getLinkSkeletons(links.length);
 
   return {
     user: {
-      ...rest,
+      email,
+      avatar,
       fullName,
     } as IPhoneTemplateUser,
     links,

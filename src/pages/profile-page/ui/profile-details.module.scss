@@ -1,14 +1,9 @@
 @import '@/src/shared/styles/mixins';
 
-.container {
-}
-
 .header {
+  margin-bottom: 2.5rem;
 }
 
 .title {
   @include title;
-}
-
-.subtitle {
 }

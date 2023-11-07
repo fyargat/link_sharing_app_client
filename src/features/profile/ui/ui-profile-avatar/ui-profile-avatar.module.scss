@@ -1,0 +1,42 @@
+@import '@/src/shared/styles/mixins';
+
+.container {
+  @include flex-column;
+
+  @include breakpoint(tablet) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  gap: 1rem;
+  color: var(--color-light-grey);
+}
+
+.title {
+  font: var(--font-body-md);
+}
+
+.avatar {
+  @include flex-column;
+  @include flex-center;
+
+  cursor: pointer;
+
+  overflow: hidden;
+  gap: 0.5rem;
+
+  width: 12rem;
+  height: 12rem;
+
+  background-color: var(--color-purple-tertiary);
+  border-radius: 12px;
+}
+
+.text {
+  @include breakpoint(tablet) {
+    max-width: 8.75rem;
+  }
+
+  font: var(--font-body-sm);
+}

@@ -1,0 +1,39 @@
+@import '@/src/shared/styles/mixins';
+
+.form {
+  @include flex-column;
+
+  gap: 2rem;
+}
+
+.inputs {
+  @include flex-column;
+
+  gap: 1rem;
+}
+
+.label {
+  flex-shrink: 0;
+}
+
+.input {
+  padding: 0.75rem 1rem !important;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding-block: 1rem;
+
+  border-top: 1px solid var(--color-purple-primary);
+}
+
+.saveButton {
+  @include breakpoint(mobile) {
+    width: auto;
+  }
+
+  width: 100%;
+}

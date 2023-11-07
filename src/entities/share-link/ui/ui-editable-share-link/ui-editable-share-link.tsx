@@ -44,6 +44,7 @@ export const UIEditableShareLink: FC<IProps> = ({
           placeholder='https://github.com/fyargat'
           value={link.href}
           onInputChange={onUpdate('href')}
+          isSelectText
         />
       </div>
     </div>

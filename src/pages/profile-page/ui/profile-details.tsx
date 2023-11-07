@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { ProfileForm } from '@/src/features/profile';
+
 import styles from './profile-details.module.scss';
 
 interface IProps {}
@@ -13,6 +15,7 @@ export const ProfileDetails: FC<IProps> = () => {
           Add your details to create a personal touch to your profile.
         </p>
       </header>
+      <ProfileForm />
     </div>
   );
 };

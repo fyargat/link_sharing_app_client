@@ -6,9 +6,12 @@
   gap: 0.5rem;
 
   &Row {
-    flex-direction: row;
-    gap: 3rem;
-    align-items: center;
+    @include breakpoint(mobile) {
+      flex-direction: row;
+      gap: 5rem;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 }
 
@@ -28,6 +31,10 @@
 .inputContainer {
   position: relative;
   width: 100%;
+
+  &Row {
+    max-width: 40rem;
+  }
 }
 
 .icon {
