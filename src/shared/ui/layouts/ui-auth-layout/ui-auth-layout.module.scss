@@ -1,6 +1,10 @@
 @import '@/src/shared/styles/mixins';
 
 .container {
+  @include breakpoint(tablet) {
+    @include flex-center;
+  }
+
   min-height: 100vh;
   padding-block: 2rem;
 }
@@ -27,6 +31,7 @@
 // temp
 .form {
   height: 360px;
-  color: white;
+  padding: 8px;
   background-color: lightgreen;
+  border-radius: 10px;
 }
