@@ -1,0 +1,16 @@
+@import '@/src/shared/styles/mixins';
+
+.signUpLink {
+  @include primary-button;
+}
+
+.footer {
+  @include flex-column;
+
+  padding-block: 1rem;
+  text-align: center;
+}
+
+.footerLink {
+  color: var(--color-purple-primary);
+}

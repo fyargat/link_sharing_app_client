@@ -18,7 +18,11 @@ export const UIPreviewLayout: FC<IProps> = ({ header, main, footer }) => {
       <main className={styles.main}>
         <div className={'wrap'}>{main}</div>
       </main>
-      {footer && <footer>{footer}</footer>}
+      {footer && (
+        <footer>
+          <div className={'wrap'}>{footer}</div>
+        </footer>
+      )}
     </div>
   );
 };
