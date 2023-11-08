@@ -1,0 +1,32 @@
+@import '@/src/shared/styles/mixins';
+
+.container {
+  min-height: 100vh;
+  padding-block: 2rem;
+}
+
+.wrap {
+  @include flex-column;
+
+  gap: 4rem;
+  max-width: 30rem;
+}
+
+.main {
+  @include flex-column;
+
+  gap: 2rem;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+  font: var(--font-head-md);
+  color: var(--color-dark-grey);
+}
+
+// temp
+.form {
+  height: 360px;
+  color: white;
+  background-color: lightgreen;
+}

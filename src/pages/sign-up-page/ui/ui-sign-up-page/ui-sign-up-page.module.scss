@@ -1,0 +1,9 @@
+@import '@/src/shared/styles/mixins';
+
+.subForm {
+  text-align: center;
+
+  a {
+    color: var(--color-purple-primary);
+  }
+}
