@@ -1,6 +1,8 @@
 @import '@/src/shared/styles/mixins';
 
 .button {
+  @include truncate;
+
   height: 2.875rem;
   padding-inline: 1.75rem;
 

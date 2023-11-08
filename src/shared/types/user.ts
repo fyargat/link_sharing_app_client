@@ -4,3 +4,9 @@ export interface IUser {
   email: string;
   avatar: string;
 }
+
+type UserWithoutName = Pick<IUser, 'avatar' | 'email'>;
+
+export interface IUserView extends UserWithoutName {
+  fullName: string;
+}

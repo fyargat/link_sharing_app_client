@@ -44,6 +44,7 @@
 
 @mixin primary-button {
   @include flex-center;
+  @include truncate;
 
   @include breakpoint(mobile) {
     min-height: 2.875rem;

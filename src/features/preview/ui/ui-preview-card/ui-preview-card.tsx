@@ -1,50 +1,44 @@
 import Image from 'next/image';
 import { FC } from 'react';
 
+import { ICONS } from '@/src/shared/config/icons';
 import { IShareLink, IUserView } from '@/src/shared/types';
 import { UIShareLink } from '@/src/shared/ui/ui-share-link';
-import { UISkeleton } from '@/src/shared/ui/ui-skeleton';
 
-import styles from './ui-phone-template.module.scss';
+import styles from './ui-preview-card.module.scss';
 
 interface IProps {
   links: IShareLink[];
   user: IUserView;
-  linkSkeletons: string[];
 }
 
-export const UIPhoneTemplate: FC<IProps> = ({
-  user,
-  linkSkeletons,
-  links = [],
-}) => {
+export const UIPreviewCard: FC<IProps> = ({ user = {}, links = [] }) => {
   const { avatar, email, fullName } = user;
 
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        {avatar ? (
-          <div className={styles.avatar}>
+        <div className={styles.avatar}>
+          {avatar ? (
             <Image src={avatar} width={100} height={100} alt='Avatar' />
-          </div>
-        ) : (
-          <UISkeleton className={styles.skeletonAvatar} />
-        )}
+          ) : (
+            <div className={styles.noImage}>
+              {ICONS['image']}
+              <p>No Image</p>
+            </div>
+          )}
+        </div>
         <div className={styles.userInfo}>
           {fullName ? (
             <p title={fullName} className={styles.fullName}>
               {fullName}
             </p>
-          ) : (
-            <UISkeleton className={styles.skeletonFullName} />
-          )}
+          ) : null}
           {email ? (
             <p title={email} className={styles.email}>
               {email}
             </p>
-          ) : (
-            <UISkeleton className={styles.skeletonEmail} />
-          )}
+          ) : null}
         </div>
       </header>
       <div className={styles.body}>
@@ -52,11 +46,6 @@ export const UIPhoneTemplate: FC<IProps> = ({
           {links.map((link, index) => (
             <li key={index}>
               <UIShareLink link={link} />
-            </li>
-          ))}
-          {linkSkeletons.map((_, index) => (
-            <li key={index}>
-              <UISkeleton className={styles.skeletonLink} />
             </li>
           ))}
         </ul>

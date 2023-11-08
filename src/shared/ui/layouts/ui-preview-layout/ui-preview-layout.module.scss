@@ -3,41 +3,47 @@
 .container {
   @include flex-column;
 
+  gap: 5rem;
   min-height: 100vh;
 }
 
 .header {
-  position: relative;
-  padding-block: 1.5rem;
+  @include breakpoint(mobile) {
+    position: relative;
+    padding-block: 1rem;
 
-  &::before {
-    content: '';
+    &::before {
+      content: '';
 
-    position: absolute;
-    z-index: -1;
-    top: 0;
+      position: absolute;
+      z-index: -1;
+      top: 0;
 
-    width: 100%;
-    min-height: 20rem;
+      width: 100%;
+      min-height: 20rem;
+      padding-block: 1.5rem;
 
-    background-color: var(--color-purple-primary);
-    border-bottom-right-radius: 32px;
-    border-bottom-left-radius: 32px;
+      background-color: var(--color-purple-primary);
+      border-bottom-right-radius: 32px;
+      border-bottom-left-radius: 32px;
+    }
   }
 }
 
 .headerInside {
+  @include breakpoint(mobile) {
+    width: 100%;
+    padding-inline: 1.5rem;
+    background-color: var(--color-white-primary);
+    border-radius: 12px;
+  }
+
   display: flex;
   gap: 1rem;
   align-items: center;
   justify-content: space-between;
 
-  width: 100%;
   padding-block: 1rem;
-  padding-inline: 1.5rem;
-
-  background-color: var(--color-white-primary);
-  border-radius: 12px;
 }
 
 .main {

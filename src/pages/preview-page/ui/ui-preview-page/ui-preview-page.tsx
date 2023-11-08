@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { FC } from 'react';
 
+import { PreviewCard } from '@/src/features/preview';
 import { UIPreviewLayout } from '@/src/shared/ui/layouts/ui-preview-layout';
 import { UISecondaryButton } from '@/src/shared/ui/ui-secondary-button';
 
@@ -20,5 +21,5 @@ const Header = () => {
 };
 
 export const UIPreviewPage: FC<IProps> = () => {
-  return <UIPreviewLayout header={<Header />} main={'center'} />;
+  return <UIPreviewLayout header={<Header />} main={<PreviewCard />} />;
 };
