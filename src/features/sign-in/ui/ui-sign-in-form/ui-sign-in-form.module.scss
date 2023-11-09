@@ -1,0 +1,11 @@
+@import '@/src/shared/styles/mixins';
+
+.form {
+  @include flex-column;
+
+  gap: 1.5rem;
+}
+
+.button {
+  width: 100%;
+}

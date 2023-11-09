@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { FC } from 'react';
 
+import { SignInForm } from '@/src/features/sign-in';
 import { UIAuthLayout } from '@/src/shared/ui/layouts/ui-auth-layout';
 
 import styles from './ui-sign-in-page.module.scss';
@@ -21,7 +22,7 @@ export const UISignInPage: FC<IProps> = () => {
     <UIAuthLayout
       title='Sign In'
       subtitle='Add your details below to get back into the app'
-      form='Form'
+      form={<SignInForm />}
       subFormBlock={<SubFormBlock />}
     />
   );

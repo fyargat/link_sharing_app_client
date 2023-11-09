@@ -1,8 +1,7 @@
 import cn from 'classnames';
-import { ChangeEvent, FC, FocusEvent } from 'react';
-import { RefCallBack } from 'react-hook-form';
+import { FC, FocusEvent, InputHTMLAttributes, PropsWithRef } from 'react';
 
-import styles from './ui-input.module.scss';
+import styles from './ui-text-field.module.scss';
 
 export interface IInputClassName {
   input?: string;
@@ -15,38 +14,27 @@ export enum Direction {
   Column = 'column',
   Row = 'row',
 }
-interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface IProps {
   label?: string;
   icon?: React.ReactNode;
   isInvalid: boolean;
   errorText: string;
   direction?: Direction;
   isSelectText?: boolean;
-  onInputChange: (value: string) => void;
   classNames?: IInputClassName;
-  ref: RefCallBack;
+  inputProps?: PropsWithRef<InputHTMLAttributes<HTMLInputElement>>;
 }
 
-export const UIInput: FC<IProps> = ({
+export const UITextField: FC<IProps> = ({
   isInvalid,
   errorText,
   label,
   icon,
   direction = Direction.Column,
-  onInputChange,
   isSelectText = false,
   classNames = {},
-  ref,
-  ...props
+  inputProps,
 }) => {
-  console.log('props', props);
-  console.log('ref', ref);
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    onInputChange(value);
-  };
-
   const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
     if (!isSelectText) return;
 
@@ -84,10 +72,8 @@ export const UIInput: FC<IProps> = ({
               [classNames?.input as string]: classNames.input,
             })}
             type='text'
-            onChange={handleChange}
             onFocus={handleFocus}
-            ref={ref}
-            {...props}
+            {...inputProps}
           />
           {isInvalid && <p className={styles.errorText}>{errorText}</p>}
         </div>
