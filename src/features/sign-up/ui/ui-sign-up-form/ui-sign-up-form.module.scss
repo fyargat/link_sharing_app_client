@@ -1,0 +1,15 @@
+@import '@/src/shared/styles/mixins';
+
+.form {
+  @include flex-column;
+
+  gap: 1.5rem;
+}
+
+.bottomText {
+  font: var(--font-body-sm);
+}
+
+.button {
+  width: 100%;
+}

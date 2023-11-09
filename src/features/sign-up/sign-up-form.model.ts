@@ -3,9 +3,10 @@ import { useForm } from 'react-hook-form';
 export interface ISignInForm {
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
-export const useSignInForm = () => {
+export const useSignUpForm = () => {
   const {
     register,
     handleSubmit,
