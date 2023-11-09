@@ -21,7 +21,7 @@ export const UIAuthLayout: FC<IProps> = ({
     <div className={styles.container}>
       <div className={cn(styles.wrap, 'wrap')}>
         <header className={styles.header}>
-          <UILogo isFull />
+          <UILogo className={styles.logo} isFull />
         </header>
         <main className={styles.main}>
           <section>

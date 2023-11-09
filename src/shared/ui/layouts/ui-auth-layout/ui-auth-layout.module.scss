@@ -16,6 +16,12 @@
   max-width: 30rem;
 }
 
+.logo {
+  @include breakpoint(tablet) {
+    margin-inline: auto;
+  }
+}
+
 .main {
   @include flex-column;
 
