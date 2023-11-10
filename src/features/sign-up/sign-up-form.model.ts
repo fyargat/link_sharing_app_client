@@ -1,4 +1,9 @@
+import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+
+import { signUp } from '@/src/shared/api/auth';
+import { Route } from '@/src/shared/config/routes';
 
 export interface ISignInForm {
   email: string;
@@ -6,19 +11,24 @@ export interface ISignInForm {
   confirmPassword: string;
 }
 
-export const useSignUpForm = () => {
-  const {
-    register,
-    handleSubmit,
-    // formState: { errors },
-  } = useForm<ISignInForm>();
+export function useSignUpForm() {
+  const router = useRouter();
 
-  const onSubmit = handleSubmit((data) => {
-    console.log('data', data);
+  const { register, handleSubmit } = useForm<ISignInForm>();
+
+  const signUpMutation = useMutation({
+    mutationFn: signUp,
+    onSuccess() {
+      void router.push(Route.Home);
+    },
   });
+
+  const errorMessage = signUpMutation.error ? 'Sign up failed' : undefined;
 
   return {
     register,
-    onSubmit,
+    errorMessage,
+    onSubmit: handleSubmit((data) => signUpMutation.mutate(data)),
+    isLoading: signUpMutation.isPending,
   };
-};
+}
