@@ -1,5 +1,6 @@
 import './index.scss';
+import { AppProvider } from './provider';
 
 export const App = ({ children }: { children: React.ReactNode }) => {
-  return <>{children}</>;
+  return <AppProvider>{children}</AppProvider>;
 };
