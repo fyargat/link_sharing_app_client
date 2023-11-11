@@ -1,0 +1,18 @@
+@import '@/src/shared/styles/mixins';
+
+.copy {
+  @include flex-center;
+
+  cursor: pointer;
+
+  width: 40px;
+  height: 40px;
+
+  color: var(--color-purple-primary);
+
+  transition: filter 0.3s ease;
+
+  &:hover {
+    filter: opacity(50%);
+  }
+}
