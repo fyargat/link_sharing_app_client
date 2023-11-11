@@ -10,13 +10,19 @@ import styles from './ui-preview-card.module.scss';
 interface IProps {
   links: IShareLink[];
   user: IUserView;
+  copyButton?: React.ReactNode;
 }
 
-export const UIPreviewCard: FC<IProps> = ({ user = {}, links = [] }) => {
+export const UIPreviewCard: FC<IProps> = ({
+  user = {},
+  links = [],
+  copyButton = null,
+}) => {
   const { avatar, email, fullName } = user;
 
   return (
     <div className={styles.container}>
+      {copyButton && <div className={styles.copy}>{copyButton}</div>}
       <header className={styles.header}>
         <div className={styles.avatar}>
           {avatar ? (

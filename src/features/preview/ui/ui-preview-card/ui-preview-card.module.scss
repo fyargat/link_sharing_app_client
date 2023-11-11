@@ -18,7 +18,24 @@
 
   @include flex-column;
 
+  position: relative;
   gap: 2rem;
+}
+
+.copy {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+
+  opacity: 0;
+
+  transition: filter 0.3s ease;
+}
+
+.container:hover {
+  .copy {
+    opacity: 1;
+  }
 }
 
 .header {
