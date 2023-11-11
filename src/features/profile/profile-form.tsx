@@ -6,17 +6,14 @@ import { UIProfileForm } from './ui/ui-profile-form';
 interface IProps {}
 
 export const ProfileForm: React.FC<IProps> = () => {
-  const { onSubmit, onChange, firstName, lastName, email, avatar } =
-    useProfileForm();
+  const { onChange, register, avatar, errors } = useProfileForm();
 
   return (
     <UIProfileForm
-      onSubmit={onSubmit}
       onChange={onChange}
-      firstName={firstName}
-      lastName={lastName}
-      email={email}
+      register={register}
       avatar={avatar}
+      errors={errors}
     />
   );
 };

@@ -1,11 +1,61 @@
-import { useProfileStore } from '@/src/entities/profile';
+import { yupResolver } from '@hookform/resolvers/yup';
+import debounce from 'lodash/debounce';
+import { useCallback } from 'react';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+
+import { useProfileInfoQuery, useProfileStore } from '@/src/entities/profile';
+import { useProfileInfoMutation } from '@/src/entities/profile/queries';
 import { IUser } from '@/src/shared/types';
 
+export interface IProfileForm {
+  firstName: string;
+  lastName: string;
+}
+
+const validationSchema = yup.object().shape({
+  firstName: yup.string().required("First name can't be empty"),
+  lastName: yup.string().required("Last name can't be empty"),
+});
+
 export const useProfileForm = () => {
-  const { update, firstName, lastName, email, avatar } = useProfileStore();
+  const { avatar } = useProfileStore();
+
+  const { data } = useProfileInfoQuery();
+  const profileInfoMutation = useProfileInfoMutation();
+
+  const profileInfoMutate = useCallback(
+    debounce(profileInfoMutation.mutate, 300),
+    [],
+  );
+
+  const {
+    register,
+    formState: { errors },
+  } = useForm<IProfileForm>({
+    resolver: yupResolver(validationSchema),
+    mode: 'onChange',
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+    },
+    values: {
+      firstName: data?.firstName ?? '',
+      lastName: data?.lastName ?? '',
+    },
+  });
+
+  console.log('errors', errors);
 
   const handleChange = (prop: keyof IUser) => (value: string) => {
-    update(prop, value);
+    if (!value.trim()) {
+      profileInfoMutate.cancel();
+      return;
+    }
+
+    profileInfoMutate({
+      [prop]: value,
+    });
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -16,9 +66,8 @@ export const useProfileForm = () => {
   return {
     onSubmit: handleSubmit,
     onChange: handleChange,
-    firstName,
-    lastName,
-    email,
+    errors,
     avatar,
+    register,
   };
 };
