@@ -32,6 +32,14 @@ export const UINavbar: FC<IProps> = ({ route }) => {
             text='Profile Details'
           />
         </li>
+        <li>
+          <UINavbarLink
+            href={Route.Preview}
+            isActive={route === Route.Preview}
+            icon={ICONS['eye']}
+            text='Preview'
+          />
+        </li>
       </ul>
     </nav>
   );

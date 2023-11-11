@@ -1,5 +1,21 @@
 @import '@/src/shared/styles/mixins';
 
+.header {
+  @include breakpoint(mobile) {
+    width: 100%;
+    padding-inline: 1.5rem;
+    background-color: var(--color-white-primary);
+    border-radius: 12px;
+  }
+
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-block: 1rem;
+}
+
 .signUpLink {
   @include primary-button;
 }

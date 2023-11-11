@@ -11,18 +11,10 @@ interface IProps {
 
 export const UIPreviewLayout: FC<IProps> = ({ header, main, footer }) => {
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <div className={cn(styles.headerInside, 'wrap')}>{header}</div>
-      </header>
-      <main className={styles.main}>
-        <div className={'wrap'}>{main}</div>
-      </main>
-      {footer && (
-        <footer>
-          <div className={'wrap'}>{footer}</div>
-        </footer>
-      )}
+    <div className={cn(styles.container, 'wrap')}>
+      {header}
+      <main className={styles.main}>{main}</main>
+      {footer && <footer>{footer}</footer>}
     </div>
   );
 };

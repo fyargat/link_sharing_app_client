@@ -45,8 +45,6 @@ export const useProfileForm = () => {
     },
   });
 
-  console.log('errors', errors);
-
   const handleChange = (prop: keyof IUser) => (value: string) => {
     if (!value.trim()) {
       profileInfoMutate.cancel();

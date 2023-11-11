@@ -7,45 +7,6 @@
   min-height: 100vh;
 }
 
-.header {
-  @include breakpoint(mobile) {
-    position: relative;
-    padding-block: 1rem;
-
-    &::before {
-      content: '';
-
-      position: absolute;
-      z-index: -1;
-      top: 0;
-
-      width: 100%;
-      min-height: 20rem;
-      padding-block: 1.5rem;
-
-      background-color: var(--color-purple-primary);
-      border-bottom-right-radius: 32px;
-      border-bottom-left-radius: 32px;
-    }
-  }
-}
-
-.headerInside {
-  @include breakpoint(mobile) {
-    width: 100%;
-    padding-inline: 1.5rem;
-    background-color: var(--color-white-primary);
-    border-radius: 12px;
-  }
-
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-between;
-
-  padding-block: 1rem;
-}
-
 .main {
   flex: 1;
 }

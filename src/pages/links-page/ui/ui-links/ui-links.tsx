@@ -13,12 +13,12 @@ interface IProps {
 
 const Header = () => {
   return (
-    <>
+    <header className={styles.header}>
       <UILogo isFull />
       <Link className={styles.signUpLink} href='/sign-up'>
         Create Your Own!
       </Link>
-    </>
+    </header>
   );
 };
 

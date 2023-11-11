@@ -4,7 +4,7 @@
   @include breakpoint(mobile) {
     min-width: 4.625rem;
     min-height: 2.875rem;
-    padding-inline: 1.6875rem;
+    padding-inline: 1rem;
   }
 
   @include flex-center;
@@ -13,7 +13,7 @@
 
   min-width: 3.25rem;
   min-height: 2.5rem;
-  padding-inline: 1rem;
+  padding-inline: 0.5rem;
 
   font: var(--font-head-sm);
   color: var(--color-light-grey);

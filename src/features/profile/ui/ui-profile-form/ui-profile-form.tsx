@@ -19,8 +19,6 @@ interface IProps {
 }
 
 export const UIProfileForm: FC<IProps> = ({ onChange, register, errors }) => {
-  console.log('register', register);
-
   return (
     <div className={styles.container}>
       <form className={styles.form}>
