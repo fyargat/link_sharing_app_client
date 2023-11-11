@@ -39,9 +39,6 @@ export const UIInput: FC<IProps> = ({
   ref,
   ...props
 }) => {
-  console.log('props', props);
-  console.log('ref', ref);
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     onInputChange(value);

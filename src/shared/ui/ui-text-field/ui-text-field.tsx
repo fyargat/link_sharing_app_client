@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { FC, FocusEvent, InputHTMLAttributes, PropsWithRef } from 'react';
+import { FieldError } from 'react-hook-form';
 
 import styles from './ui-text-field.module.scss';
 
@@ -17,23 +18,21 @@ export enum Direction {
 interface IProps {
   label?: string;
   icon?: React.ReactNode;
-  isInvalid: boolean;
-  errorText: string;
   direction?: Direction;
   isSelectText?: boolean;
   classNames?: IInputClassName;
   inputProps?: PropsWithRef<InputHTMLAttributes<HTMLInputElement>>;
+  error: FieldError | undefined;
 }
 
 export const UITextField: FC<IProps> = ({
-  isInvalid,
-  errorText,
   label,
   icon,
   direction = Direction.Column,
   isSelectText = false,
   classNames = {},
   inputProps,
+  error,
 }) => {
   const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
     if (!isSelectText) return;
@@ -51,7 +50,7 @@ export const UITextField: FC<IProps> = ({
         {label && (
           <p
             className={cn(styles.labelText, {
-              [styles.labelTextInvalid]: isInvalid,
+              [styles.labelTextInvalid]: error,
               [styles.labelTextRow]: direction === Direction.Row,
               [classNames?.labelText as string]: classNames.labelText,
             })}
@@ -68,14 +67,14 @@ export const UITextField: FC<IProps> = ({
           {icon && <div className={styles.icon}>{icon}</div>}
           <input
             className={cn(styles.input, {
-              [styles.inputInvalid]: isInvalid,
+              [styles.inputInvalid]: error,
               [classNames?.input as string]: classNames.input,
             })}
             type='text'
             onFocus={handleFocus}
             {...inputProps}
           />
-          {isInvalid && <p className={styles.errorText}>{errorText}</p>}
+          {error && <p className={styles.errorText}>{error.message}</p>}
         </div>
       </label>
     </div>
