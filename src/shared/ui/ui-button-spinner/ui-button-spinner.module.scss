@@ -1,0 +1,97 @@
+@import '@/src/shared/styles/mixins';
+
+$size: 3px;
+$start: 50px;
+$end: 100px;
+
+.loader {
+  position: relative;
+  left: -100px;
+
+  display: block;
+
+  box-sizing: border-box;
+  width: $size;
+  height: $size;
+  margin: 15px auto;
+
+  color: var(--color-red);
+
+  border-radius: 50%;
+
+  animation: shadow-rolling 1s linear infinite;
+}
+
+@keyframes shadow-rolling {
+  0% {
+    box-shadow:
+      0 0 rgb(255 255 255 / 0%),
+      0 0 rgb(255 255 255 / 0%),
+      0 0 rgb(255 255 255 / 0%),
+      0 0 rgb(255 255 255 / 0%);
+  }
+
+  12% {
+    box-shadow:
+      $start 0 white,
+      0 0 rgb(255 255 255 / 0%),
+      0 0 rgb(255 255 255 / 0%),
+      0 0 rgb(255 255 255 / 0%);
+  }
+
+  25% {
+    box-shadow:
+      $start + 10px 0 white,
+      $start 0 white,
+      0 0 rgb(255 255 255 / 0%),
+      0 0 rgb(255 255 255 / 0%);
+  }
+
+  36% {
+    box-shadow:
+      $start + 20px 0 white,
+      $start + 10px 0 white,
+      $start 0 white,
+      0 0 rgb(255 255 255 / 0%);
+  }
+
+  50% {
+    box-shadow:
+      $start + 30px 0 white,
+      $start + 20px 0 white,
+      $start + 10px 0 white,
+      $start 0 white;
+  }
+
+  62% {
+    box-shadow:
+      $end 0 rgb(255 255 255 / 0%),
+      $start + 30px 0 white,
+      $start + 20px 0 white,
+      $start + 10px 0 white;
+  }
+
+  75% {
+    box-shadow:
+      $end 0 rgb(255 255 255 / 0%),
+      $end 0 rgb(255 255 255 / 0%),
+      $start + 30px 0 white,
+      $start + 20px 0 white;
+  }
+
+  87% {
+    box-shadow:
+      $end 0 rgb(255 255 255 / 0%),
+      $end 0 rgb(255 255 255 / 0%),
+      $end 0 rgb(255 255 255 / 0%),
+      $start + 30px 0 white;
+  }
+
+  100% {
+    box-shadow:
+      $end 0 rgb(255 255 255 / 0%),
+      $end 0 rgb(255 255 255 / 0%),
+      $end 0 rgb(255 255 255 / 0%),
+      $end 0 rgb(255 255 255 / 0%);
+  }
+}
