@@ -1,5 +1,11 @@
 @import '@/src/shared/styles/mixins';
 
+.container {
+  @include flex-column;
+
+  flex: 1;
+}
+
 .header {
   margin-bottom: 2.5rem;
 }

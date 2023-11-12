@@ -56,13 +56,7 @@ export const useProfileForm = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('submit');
-  };
-
   return {
-    onSubmit: handleSubmit,
     onChange: handleChange,
     errors,
     avatar,

@@ -1,10 +1,11 @@
 import { useProfileInfoQuery, useProfileStore } from '@/src/entities/profile';
-import { useShareLinkStore } from '@/src/entities/share-link';
+import { useShareLinksQuery } from '@/src/entities/share-link';
 import { IUserView } from '@/src/shared/types';
 
 export const usePreviewCard = () => {
-  const { links } = useShareLinkStore();
   const { avatar } = useProfileStore();
+
+  const { data: links = [] } = useShareLinksQuery();
 
   const { data: profile } = useProfileInfoQuery();
 

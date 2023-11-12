@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { FC } from 'react';
 
 import styles from './ui-spinner.module.scss';
@@ -16,14 +17,20 @@ const SIZES = {
 
 interface IProps {
   size?: SpinnerSize;
+  className?: string;
 }
 
-export const UISpinner: FC<IProps> = ({ size = SpinnerSize.Medium }) => {
+export const UISpinner: FC<IProps> = ({
+  className = '',
+  size = SpinnerSize.Medium,
+}) => {
   const sizeNumber = SIZES[size];
 
   return (
     <div
-      className={styles.spinner}
+      className={cn(styles.spinner, {
+        [className]: className,
+      })}
       style={{
         width: sizeNumber,
         height: sizeNumber,

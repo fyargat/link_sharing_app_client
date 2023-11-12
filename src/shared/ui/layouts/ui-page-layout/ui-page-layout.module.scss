@@ -32,6 +32,8 @@
   }
 
   &Right {
+    @include flex-column;
+
     flex: 3;
   }
 }

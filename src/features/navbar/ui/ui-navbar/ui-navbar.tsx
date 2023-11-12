@@ -29,7 +29,7 @@ export const UINavbar: FC<IProps> = ({ route }) => {
             href={Route.Profile}
             isActive={route === Route.Profile}
             icon={ICONS['profile']}
-            text='Profile Details'
+            text='Profile'
           />
         </li>
         <li>

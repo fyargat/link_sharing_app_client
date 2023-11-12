@@ -1,5 +1,11 @@
 @import '@/src/shared/styles/mixins';
 
+.container {
+  @include flex-column;
+
+  flex: 1;
+}
+
 .addButton {
   width: 100%;
   margin-bottom: 2rem;
@@ -9,23 +15,17 @@
   @include flex-column;
 
   gap: 3rem;
+  width: 100%;
   margin-bottom: 2rem;
 }
 
-.footer {
+.content {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  padding-block: 1rem;
-
-  border-top: 1px solid var(--color-purple-primary);
+  flex: 1;
 }
 
-.saveButton {
-  @include breakpoint(mobile) {
-    width: auto;
-  }
+.spinner {
+  @include flex-center;
 
-  width: 100%;
+  flex: 1;
 }

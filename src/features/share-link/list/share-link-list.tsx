@@ -1,6 +1,6 @@
 'use client';
 
-import { useShareLinkList } from './share-link-list.model';
+import { useShareLinkList } from './model/share-link-list.model';
 import { UIShareLinkList } from './ui/ui-share-link-list';
 
 interface IProps {}
