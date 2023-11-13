@@ -5,7 +5,7 @@ import { ICONS } from '@/src/shared/config/icons';
 import { IShareLink, IUserView } from '@/src/shared/types';
 import { UIShareLink } from '@/src/shared/ui/ui-share-link';
 
-import styles from './ui-preview-card.module.scss';
+import styles from './ui-card.module.scss';
 
 interface IProps {
   links: IShareLink[];
@@ -13,7 +13,7 @@ interface IProps {
   copyButton?: React.ReactNode;
 }
 
-export const UIPreviewCard: FC<IProps> = ({
+export const UICard: FC<IProps> = ({
   user = {},
   links = [],
   copyButton = null,
