@@ -1,41 +1,33 @@
-import { create } from 'zustand';
+import { IShareLink } from '@/src/shared/types';
 
+import { useOrderQuery } from './order.queries';
 import {
-  EditableShareLinkPayloadType,
-  IShareLink,
-  ShareLinkId,
-} from '@/src/shared/types';
+  useShareLinkCreateMutation,
+  useShareLinksQuery,
+} from './share-link.queries';
 
-import { createShareLink } from './share-link.lib';
+const useSortLinks = (links: IShareLink[]) => {
+  const { data: order = [] } = useOrderQuery();
 
-interface IShareLinkStore {
-  links: IShareLink[];
-  create: () => void;
-  update: (id: ShareLinkId, payload: EditableShareLinkPayloadType) => void;
-  remove: (id: ShareLinkId) => void;
-}
+  const sort = (a: IShareLink, b: IShareLink) => {
+    const aValue = order.indexOf(a.id);
+    const bValue = order.indexOf(b.id);
 
-export const useShareLinkStore = create<IShareLinkStore>()((set) => ({
-  links: [],
-  create: () =>
-    set((state) => ({ links: [...state.links, createShareLink()] })),
-  update: (id, payload) =>
-    set((state) => {
-      const links = state.links.map((link) => {
-        if (link.id !== id) return link;
+    return aValue - bValue;
+  };
 
-        return {
-          ...link,
-          ...payload,
-        };
-      });
+  return [...links].sort(sort);
+};
 
-      return { links };
-    }),
-  remove: (id) =>
-    set((state) => {
-      const links = state.links.filter((link) => link.id !== id);
+export const useShareLink = () => {
+  const { data: links = [], isFetching } = useShareLinksQuery();
+  const { mutate: createShareLink } = useShareLinkCreateMutation();
 
-      return { links };
-    }),
-}));
+  const sortedLinks = useSortLinks(links);
+
+  return {
+    links: sortedLinks,
+    createShareLink,
+    isFetching,
+  };
+};

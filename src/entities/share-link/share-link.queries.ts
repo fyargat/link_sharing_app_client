@@ -8,7 +8,7 @@ import {
 } from '@/src/shared/api/share-link';
 import { IShareLinksResponseData } from '@/src/shared/api/types';
 
-const linksKey = ['links'];
+export const linksKey = ['links'];
 
 export const useShareLinksQuery = () => {
   return useQuery({
