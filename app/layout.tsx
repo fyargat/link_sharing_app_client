@@ -1,8 +1,9 @@
-import { App } from '@/src/app';
 import type { Metadata } from 'next';
-import { Instrument_Sans } from 'next/font/google';
+import { Open_Sans } from 'next/font/google';
 
-const instrumentSans = Instrument_Sans({
+import { App } from '@/src/app';
+
+const openSans = Open_Sans({
   subsets: ['latin'],
   weight: ['400', '700'],
 });
@@ -19,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={instrumentSans.className}>
+      <body className={openSans.className}>
         <App>{children}</App>
       </body>
     </html>
