@@ -5,7 +5,7 @@ export interface IAuthBody {
   password: string;
 }
 
-export interface IProfileResponseData {
+export interface IProfileData {
   id: number;
   firstName: string;
   lastName: string;

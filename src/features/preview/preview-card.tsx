@@ -1,7 +1,8 @@
 'use client';
 
+import { UICard } from '@/src/shared/ui/ui-card';
+
 import { usePreviewCard } from './preview-card.model';
-import { UIPreviewCard } from './ui/ui-preview-card';
 
 interface IProps {
   copyButton?: React.ReactNode;
@@ -10,5 +11,5 @@ interface IProps {
 export const PreviewCard: React.FC<IProps> = ({ copyButton }) => {
   const { links, user } = usePreviewCard();
 
-  return <UIPreviewCard links={links} user={user} copyButton={copyButton} />;
+  return <UICard links={links} user={user} copyButton={copyButton} />;
 };

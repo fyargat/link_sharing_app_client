@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { FC } from 'react';
 
-import { PreviewCard } from '@/src/features/preview';
+import { SharedInfoCard } from '@/src/features/shared-info';
+import { Route } from '@/src/shared/config/routes';
 import { UIPreviewLayout } from '@/src/shared/ui/layouts/ui-preview-layout';
 import { UILogo } from '@/src/shared/ui/ui-logo';
 
@@ -14,8 +15,10 @@ interface IProps {
 const Header = () => {
   return (
     <header className={styles.header}>
-      <UILogo isFull />
-      <Link className={styles.signUpLink} href='/sign-up'>
+      <Link href={Route.Home}>
+        <UILogo isFull />
+      </Link>
+      <Link className={styles.signUpLink} href={Route.SignUp}>
         Create Your Own!
       </Link>
     </header>
@@ -37,12 +40,10 @@ const Footer = () => {
 };
 
 export const UILinks: FC<IProps> = ({ id }) => {
-  console.log('id', id);
-
   return (
     <UIPreviewLayout
       header={<Header />}
-      main={<PreviewCard />}
+      main={<SharedInfoCard id={id} />}
       footer={<Footer />}
     />
   );
