@@ -8,6 +8,8 @@ import {
 } from '@/src/shared/api/share-link';
 import { IShareLinksResponseData } from '@/src/shared/api/types';
 
+import { orderKey } from './order.queries';
+
 export const linksKey = ['links'];
 
 export const useShareLinksQuery = () => {
@@ -27,7 +29,8 @@ export const useShareLinkCreateMutation = () => {
 
   return useMutation({
     mutationFn: createShareLink,
-    onSuccess: (createdLink) => {
+    onSuccess: async (createdLink) => {
+      await queryClient.invalidateQueries({ queryKey: orderKey });
       queryClient.setQueryData(linksKey, (oldData: IShareLinksResponseData) => {
         const data = { data: [...oldData.data, createdLink] };
         return data;
@@ -65,7 +68,8 @@ export const useShareLinkRemoveMutation = () => {
 
   return useMutation({
     mutationFn: removeShareLink,
-    onSuccess: (removedLink) => {
+    onSuccess: async (removedLink) => {
+      await queryClient.invalidateQueries({ queryKey: orderKey });
       queryClient.setQueryData(linksKey, (oldData: IShareLinksResponseData) => {
         const links = oldData.data.filter(
           (link) => link.id !== removedLink?.id,

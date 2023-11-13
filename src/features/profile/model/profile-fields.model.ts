@@ -4,7 +4,7 @@ import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
-import { useProfile, useProfileInfoQuery } from '@/src/entities/profile';
+import { useProfileInfoQuery } from '@/src/entities/profile';
 import { useProfileInfoMutation } from '@/src/entities/profile/queries';
 import { IUser } from '@/src/shared/types';
 
@@ -18,16 +18,11 @@ const validationSchema = yup.object().shape({
   lastName: yup.string().required("Last name can't be empty"),
 });
 
-export const useProfileForm = () => {
-  const { avatar } = useProfile();
+export const useProfileFields = () => {
+  const { data: profile } = useProfileInfoQuery();
+  const profileInfo = useProfileInfoMutation();
 
-  const { data } = useProfileInfoQuery();
-  const profileInfoMutation = useProfileInfoMutation();
-
-  const profileInfoMutate = useCallback(
-    debounce(profileInfoMutation.mutate, 300),
-    [],
-  );
+  const updateProfileInfo = useCallback(debounce(profileInfo.mutate, 300), []);
 
   const {
     register,
@@ -40,18 +35,18 @@ export const useProfileForm = () => {
       lastName: '',
     },
     values: {
-      firstName: data?.firstName ?? '',
-      lastName: data?.lastName ?? '',
+      firstName: profile?.firstName ?? '',
+      lastName: profile?.lastName ?? '',
     },
   });
 
   const handleChange = (prop: keyof IUser) => (value: string) => {
     if (!value.trim()) {
-      profileInfoMutate.cancel();
+      updateProfileInfo.cancel();
       return;
     }
 
-    profileInfoMutate({
+    updateProfileInfo({
       [prop]: value,
     });
   };
@@ -59,7 +54,6 @@ export const useProfileForm = () => {
   return {
     onChange: handleChange,
     errors,
-    avatar,
     register,
   };
 };

@@ -1,1 +1,1 @@
-export { ProfileForm } from './profile-form';
+export { UIProfileForm as ProfileForm } from './ui';

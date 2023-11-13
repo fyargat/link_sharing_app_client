@@ -2,8 +2,6 @@
 
 .container {
   @include breakpoint(mobile) {
-    width: fit-content;
-    width: 100%;
     max-width: 30rem;
     margin-inline: auto;
     padding-block: 3rem;
@@ -20,21 +18,25 @@
 
   position: relative;
   gap: 2rem;
+  width: 100%;
 }
 
 .copy {
+  @include breakpoint(laptop) {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-
-  opacity: 0;
-
-  transition: filter 0.3s ease;
 }
 
 .container:hover {
-  .copy {
-    opacity: 1;
+  @include breakpoint(laptop) {
+    .copy {
+      opacity: 1;
+    }
   }
 }
 

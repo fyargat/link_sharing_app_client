@@ -3,10 +3,13 @@
 .container {
   @include flex-column;
 
-  gap: 5rem;
   min-height: 100vh;
 }
 
 .main {
+  @include flex-center;
+
   flex: 1;
+  width: 100%;
+  padding-block: 2rem;
 }

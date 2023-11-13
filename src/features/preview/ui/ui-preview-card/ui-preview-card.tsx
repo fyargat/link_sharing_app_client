@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import { FC } from 'react';
 
+import { UIAvatar } from '@/src/entities/profile';
 import { ICONS } from '@/src/shared/config/icons';
 import { IShareLink, IUserView } from '@/src/shared/types';
 import { UIShareLink } from '@/src/shared/ui/ui-share-link';
@@ -26,7 +26,7 @@ export const UIPreviewCard: FC<IProps> = ({
       <header className={styles.header}>
         <div className={styles.avatar}>
           {avatar ? (
-            <Image src={avatar} width={100} height={100} alt='Avatar' />
+            <UIAvatar avatar={avatar} isVisibleBorder />
           ) : (
             <div className={styles.noImage}>
               {ICONS['image']}

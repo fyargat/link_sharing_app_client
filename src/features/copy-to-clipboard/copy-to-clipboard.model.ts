@@ -1,14 +1,11 @@
 import { toast } from 'react-toastify';
 
 export const useCopyToClipboard = () => {
+  // temp
   const text = 'copy text';
 
   const handleCopy = () => {
-    toast('The link has been copied to your clipboard!', {
-      autoClose: 1000,
-      hideProgressBar: true,
-      pauseOnHover: false,
-    });
+    toast.success('The link has been copied to your clipboard!');
   };
 
   return {

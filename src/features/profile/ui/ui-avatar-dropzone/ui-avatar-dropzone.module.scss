@@ -1,0 +1,59 @@
+@import '@/src/shared/styles/mixins';
+
+.container {
+  @include flex-column;
+  @include flex-center;
+
+  cursor: pointer;
+
+  position: relative;
+
+  overflow: hidden;
+  gap: 0.5rem;
+
+  width: 12rem;
+  height: 12rem;
+
+  background-color: var(--color-purple-tertiary);
+  border-radius: 12px;
+
+  &Disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+.overlay,
+.loader {
+  @include flex-center;
+
+  position: absolute;
+  inset: 0;
+}
+
+.loader {
+  background-color: rgba($color: #fff, $alpha: 90%);
+}
+
+.overlay {
+  @include flex-column;
+
+  gap: 0.5rem;
+
+  font: var(--font-head-sm);
+  color: var(--color-white-primary);
+
+  opacity: 0;
+  background-color: #00000080;
+
+  transition: opacity 0.2s ease;
+
+  &Icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}

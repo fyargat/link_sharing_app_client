@@ -15,22 +15,7 @@
 
 .title {
   font: var(--font-body-md);
-}
-
-.avatar {
-  @include flex-column;
-  @include flex-center;
-
-  cursor: pointer;
-
-  overflow: hidden;
-  gap: 0.5rem;
-
-  width: 12rem;
-  height: 12rem;
-
-  background-color: var(--color-purple-tertiary);
-  border-radius: 12px;
+  color: var(--color-dark-grey);
 }
 
 .text {

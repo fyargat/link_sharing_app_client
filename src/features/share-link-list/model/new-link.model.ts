@@ -1,7 +1,5 @@
 import { useShareLink } from '@/src/entities/share-link';
 
-import { getNewShareLink } from '../lib';
-
 export const useNewLink = () => {
   const { createShareLink } = useShareLink();
 
@@ -9,8 +7,8 @@ export const useNewLink = () => {
   //   return links.some((link) => !link.text);
   // }, [links]);
 
-  const handleShareLinkCreate = () => {
-    createShareLink(getNewShareLink());
+  const handleShareLinkCreate = async () => {
+    await createShareLink();
   };
 
   return {

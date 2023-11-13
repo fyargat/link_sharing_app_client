@@ -1,6 +1,7 @@
 import { IShareLink } from '@/src/shared/types';
 
 import { useOrderQuery } from './order.queries';
+import { getNewShareLink } from './share-link.lib';
 import {
   useShareLinkCreateMutation,
   useShareLinksQuery,
@@ -21,9 +22,15 @@ const useSortLinks = (links: IShareLink[]) => {
 
 export const useShareLink = () => {
   const { data: links = [], isFetching } = useShareLinksQuery();
-  const { mutate: createShareLink } = useShareLinkCreateMutation();
+  const { mutate: createLink } = useShareLinkCreateMutation();
+  const { refetch } = useOrderQuery();
 
   const sortedLinks = useSortLinks(links);
+
+  const createShareLink = async () => {
+    createLink(getNewShareLink());
+    await refetch();
+  };
 
   return {
     links: sortedLinks,

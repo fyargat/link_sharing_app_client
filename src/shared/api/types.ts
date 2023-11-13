@@ -9,6 +9,7 @@ export interface IProfileResponseData {
   id: number;
   firstName: string;
   lastName: string;
+  avatar: string;
   ownerId: number;
   email: string;
 }
@@ -16,6 +17,7 @@ export interface IProfileResponseData {
 export interface IProfileRequestData {
   firstName?: string;
   lastName?: string;
+  avatar?: string;
 }
 
 export interface IShareLinksResponseData {

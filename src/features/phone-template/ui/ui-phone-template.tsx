@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import { FC } from 'react';
 
+import { UIAvatar } from '@/src/entities/profile';
 import { IShareLink, IUserView } from '@/src/shared/types';
 import { UIShareLink } from '@/src/shared/ui/ui-share-link';
 import { UISkeleton } from '@/src/shared/ui/ui-skeleton';
@@ -24,9 +24,7 @@ export const UIPhoneTemplate: FC<IProps> = ({
     <div className={styles.container}>
       <header className={styles.header}>
         {avatar ? (
-          <div className={styles.avatar}>
-            <Image src={avatar} width={100} height={100} alt='Avatar' />
-          </div>
+          <UIAvatar isVisibleBorder avatar={avatar} className={styles.avatar} />
         ) : (
           <UISkeleton className={styles.skeletonAvatar} />
         )}
