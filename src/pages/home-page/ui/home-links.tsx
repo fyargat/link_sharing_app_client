@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { ShareLinkList } from '@/src/features/share-link/list';
+import { ShareLinkList } from '@/src/features/share-link-list';
 
 import styles from './home-links.module.scss';
 

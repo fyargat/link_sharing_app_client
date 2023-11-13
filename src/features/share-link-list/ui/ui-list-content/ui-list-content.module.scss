@@ -1,14 +1,8 @@
 @import '@/src/shared/styles/mixins';
 
 .container {
-  @include flex-column;
-
+  display: flex;
   flex: 1;
-}
-
-.addButton {
-  width: 100%;
-  margin-bottom: 2rem;
 }
 
 .list {
@@ -17,11 +11,6 @@
   gap: 3rem;
   width: 100%;
   margin-bottom: 2rem;
-}
-
-.content {
-  display: flex;
-  flex: 1;
 }
 
 .spinner {

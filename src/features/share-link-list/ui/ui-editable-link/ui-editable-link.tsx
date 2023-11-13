@@ -1,3 +1,5 @@
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import { FC, memo } from 'react';
 
 import { ICONS } from '@/src/shared/config/icons';
@@ -5,8 +7,8 @@ import { IShareLink } from '@/src/shared/types';
 import { UISelectPlatform } from '@/src/shared/ui/ui-select';
 import { UITextField } from '@/src/shared/ui/ui-text-field';
 
-import { useEditableShareLink } from '../../model/editable-share-link.model';
-import styles from './ui-editable-share-link.module.scss';
+import { useEditableLink } from '../../model';
+import styles from './ui-editable-link.module.scss';
 
 interface IProps {
   link: IShareLink;
@@ -15,12 +17,24 @@ interface IProps {
 
 const UIEditableShareLink: FC<IProps> = ({ link, order }) => {
   const { onRemove, onSelectPlatform, onChange, register, errors } =
-    useEditableShareLink(link);
+    useEditableLink(link);
+
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: link.id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={setNodeRef} style={style}>
       <header className={styles.header}>
-        <button className={styles.draggableButton}>
+        <button
+          className={styles.draggableButton}
+          {...listeners}
+          {...attributes}
+        >
           <div className={styles.dashes}>{ICONS['dashes']}</div>
           <h3 className={styles.title}>Link #{order}</h3>
         </button>
@@ -51,4 +65,4 @@ const UIEditableShareLink: FC<IProps> = ({ link, order }) => {
   );
 };
 
-export const EditableShareLink = memo(UIEditableShareLink);
+export const UIEditableLink = memo(UIEditableShareLink);

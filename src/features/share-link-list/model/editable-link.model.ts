@@ -18,7 +18,7 @@ const validationSchema = yup.object().shape({
   text: yup.string().required("Can't be empty"),
 });
 
-export const useEditableShareLink = (link: IShareLink) => {
+export const useEditableLink = (link: IShareLink) => {
   const { mutate: removeShareLink } = useShareLinkRemoveMutation();
   const { mutate: updateShareLink } = useShareLinkUpdateMutation();
   const debounceUpdateShareLink = useCallback(
