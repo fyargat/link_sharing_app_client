@@ -22,4 +22,8 @@ export interface IShareLinksResponseData {
   data: IShareLink[];
 }
 
+export interface IOrderResponseData {
+  data: number[];
+}
+
 export interface ICreateShareLinkResponseData extends IShareLink {}

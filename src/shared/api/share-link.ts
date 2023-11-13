@@ -13,6 +13,7 @@ export const fetchShareLinks =
         url: 'link',
         method: 'get',
       });
+
       return data;
     } catch (error) {
       console.log('error', error);
