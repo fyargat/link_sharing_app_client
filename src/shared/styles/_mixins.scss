@@ -67,10 +67,12 @@
 
   transition:
     background-color 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease,
+    color 0.3s ease;
 
   &:hover {
-    background-color: var(--color-purple-secondary);
+    color: var(--color-white-primary);
+    background-color: var(--color-purple-primary);
     box-shadow: 0 0 32px var(--color-purple-shadow);
   }
 
