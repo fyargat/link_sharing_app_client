@@ -15,7 +15,7 @@ export const UIShareLink: FC<IProps> = ({ link, ...props }) => {
 
   return (
     <a
-      href={link.href}
+      href={link.text}
       className={cn(styles.link, {
         [styles.linkWithBorder]: colors?.hasBorder,
       })}

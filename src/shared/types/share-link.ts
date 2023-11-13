@@ -11,3 +11,7 @@ export interface IShareLink {
 export type EditableShareLinkPayloadType = Partial<
   Pick<IShareLink, 'text' | 'platformId'>
 >;
+
+export interface IShareLinkOrder {
+  order: number[];
+}

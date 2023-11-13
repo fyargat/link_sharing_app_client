@@ -4,7 +4,7 @@ import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
-import { useProfileInfoQuery, useProfileStore } from '@/src/entities/profile';
+import { useProfile, useProfileInfoQuery } from '@/src/entities/profile';
 import { useProfileInfoMutation } from '@/src/entities/profile/queries';
 import { IUser } from '@/src/shared/types';
 
@@ -19,7 +19,7 @@ const validationSchema = yup.object().shape({
 });
 
 export const useProfileForm = () => {
-  const { avatar } = useProfileStore();
+  const { avatar } = useProfile();
 
   const { data } = useProfileInfoQuery();
   const profileInfoMutation = useProfileInfoMutation();
