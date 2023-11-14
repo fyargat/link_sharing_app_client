@@ -36,7 +36,7 @@ export const UISelectPlatform: FC<IProps> = ({
         </button>
 
         {isVisible ? (
-          <ul className={styles.list}>
+          <ul className={cn(styles.list, 'scroll-content')}>
             {PLATFORMS.map((platform) => (
               <li key={platform.id} className={styles.item}>
                 <button

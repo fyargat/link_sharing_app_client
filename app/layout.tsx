@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
 
@@ -20,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={openSans.className}>
+      <body className={cn(openSans.className, 'scroll-content')}>
         <App>{children}</App>
       </body>
     </html>

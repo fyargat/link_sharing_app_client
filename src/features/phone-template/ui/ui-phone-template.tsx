@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { FC } from 'react';
 
 import { UIAvatar } from '@/src/entities/profile';
@@ -45,7 +46,7 @@ export const UIPhoneTemplate: FC<IProps> = ({
           )}
         </div>
       </header>
-      <div className={styles.body}>
+      <div className={cn(styles.body, 'scroll-content')}>
         <ul className={styles.list}>
           {links.map((link, index) => (
             <li key={index}>
