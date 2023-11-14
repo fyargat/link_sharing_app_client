@@ -1,12 +1,12 @@
 import { toast } from 'react-toastify';
 
 import { useProfile } from '@/src/entities/profile';
+import { getURL } from '@/src/shared/lib/url';
 
 export const useCopyToClipboard = () => {
   const { profile } = useProfile();
 
-  // temp
-  const text = `http://localhost:3000/links/${profile?.id}`;
+  const copyText = getURL(`/links/${profile?.id}`);
 
   const handleCopy = () => {
     toast.success('The link has been copied to your clipboard!');
@@ -14,6 +14,6 @@ export const useCopyToClipboard = () => {
 
   return {
     onCopy: handleCopy,
-    text,
+    copyText,
   };
 };

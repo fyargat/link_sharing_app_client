@@ -6,7 +6,7 @@ import { UICopyToClipboardButton } from './ui/ui-copy-to-clipboard-button';
 interface IProps {}
 
 export const CopyToClipboard: React.FC<IProps> = () => {
-  const { text, onCopy } = useCopyToClipboard();
+  const { copyText, onCopy } = useCopyToClipboard();
 
-  return <UICopyToClipboardButton text={text} onCopy={onCopy} />;
+  return <UICopyToClipboardButton text={copyText} onCopy={onCopy} />;
 };
