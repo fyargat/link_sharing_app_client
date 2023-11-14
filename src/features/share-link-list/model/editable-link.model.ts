@@ -9,7 +9,10 @@ import {
   useShareLinkRemoveMutation,
   useShareLinkUpdateMutation,
 } from '@/src/entities/share-link/share-link.queries';
+import { Platform } from '@/src/shared/config/platforms';
 import { IShareLink } from '@/src/shared/types';
+
+import { getLinkTextByPlatform, getPlatformByText } from '../lib';
 
 export interface IEditableShareLinkInput {
   text: string;
@@ -42,21 +45,25 @@ export const useEditableLink = (link: IShareLink) => {
   });
 
   const handleChange = (text: string) => {
-    if (!text.trim()) {
+    if (!text.trim().length) {
       debounceUpdateShareLink.cancel();
       return;
     }
 
+    const platformId = getPlatformByText(link, text);
+
     debounceUpdateShareLink({
       id: link.id,
       text,
+      platformId: Number(platformId),
     });
   };
 
-  const handleSelectPlatform = (platformId: number) => {
+  const handleSelectPlatform = (platformId: Platform) => {
     updateShareLink({
       id: link.id,
       platformId,
+      text: getLinkTextByPlatform(link, platformId),
     });
   };
 

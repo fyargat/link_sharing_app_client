@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Platform, platformMap } from '../../config/platforms';
 import { useOutsideClick } from '../../lib/hooks/useOutsideClick';
@@ -10,6 +10,10 @@ export const useSelectPlatform = (
   const [isVisible, setIsVisible] = useState(false);
   const [current, setCurrent] = useState<Platform>(platformId);
   const platform = platformMap.get(current);
+
+  useEffect(() => {
+    setCurrent(platformId);
+  }, [platformId]);
 
   const handleToggleVisible = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
