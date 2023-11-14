@@ -21,16 +21,21 @@ export const UIAvatar: FC<IProps> = ({
     <div
       className={cn(styles.container, {
         [className]: className,
-        [styles.containerBorder]: isVisibleBorder,
       })}
     >
-      <Image
-        src={avatar}
-        width={192}
-        height={192}
-        priority
-        alt='Avatar image'
-      />
+      <div
+        className={cn(styles.border, {
+          [styles.borderVisible]: isVisibleBorder,
+        })}
+      >
+        <Image
+          src={avatar}
+          width={192}
+          height={192}
+          priority
+          alt='Avatar image'
+        />
+      </div>
     </div>
   );
 };
