@@ -23,9 +23,8 @@ const useSortLinks = (links: IShareLink[], order: number[]) => {
 };
 
 export const useShareLink = () => {
-  const { data: order = [], isFetching: isOrderFetching } = useOrderQuery();
-  const { data: links = [], isFetching: isLinksFetching } =
-    useShareLinksQuery();
+  const { data: order = [], isLoading: isOrderLoading } = useOrderQuery();
+  const { data: links = [], isLoading: isLinksLoading } = useShareLinksQuery();
   const { mutate: createLink } = useShareLinkCreateMutation();
   const { refetch } = useOrderQuery();
 
@@ -36,7 +35,7 @@ export const useShareLink = () => {
     await refetch();
   };
 
-  const isFetching = isOrderFetching || isLinksFetching;
+  const isFetching = isOrderLoading || isLinksLoading;
 
   return {
     links: sortedLinks,

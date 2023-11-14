@@ -23,6 +23,9 @@ export const UIPhoneTemplate: FC<IProps> = ({
 
   return (
     <div className={styles.container}>
+      {Boolean(links.length) && (
+        <div className={styles.count}>{links.length}</div>
+      )}
       <header className={styles.header}>
         {avatar ? (
           <UIAvatar isVisibleBorder avatar={avatar} className={styles.avatar} />

@@ -7,11 +7,7 @@ import { getSharedInfo } from './shared-info.actions';
 import { sortLinks } from './shared-info.lib';
 
 export const useShareInfoCard = async (id: string) => {
-  console.log('id', id);
-
   const sharedInfo = await getSharedInfo(id);
-
-  console.log('sharedInfo', sharedInfo);
 
   if (!sharedInfo) {
     return redirect(Route.SignUp);

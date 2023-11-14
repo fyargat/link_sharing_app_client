@@ -7,9 +7,10 @@ interface IProps {
   header: React.ReactNode;
   left?: React.ReactNode;
   right?: React.ReactNode;
+  footer?: React.ReactNode;
 }
 
-export const UIPageLayout: FC<IProps> = ({ header, left, right }) => {
+export const UIPageLayout: FC<IProps> = ({ header, left, right, footer }) => {
   return (
     <div className={cn(styles.container, 'wrap')}>
       {header}
@@ -25,6 +26,7 @@ export const UIPageLayout: FC<IProps> = ({ header, left, right }) => {
           </section>
         )}
       </main>
+      {footer}
     </div>
   );
 };

@@ -26,7 +26,7 @@ export const useEditableLink = (link: IShareLink) => {
   const { mutate: removeShareLink } = useShareLinkRemoveMutation();
   const { mutate: updateShareLink } = useShareLinkUpdateMutation();
   const debounceUpdateShareLink = useCallback(
-    debounce(updateShareLink, 300),
+    debounce(updateShareLink, 500),
     [],
   );
 
