@@ -22,7 +22,7 @@ interface IProps {
   isSelectText?: boolean;
   classNames?: IInputClassName;
   inputProps?: PropsWithRef<InputHTMLAttributes<HTMLInputElement>>;
-  error: FieldError | undefined;
+  error?: FieldError | undefined;
 }
 
 export const UITextField: FC<IProps> = ({

@@ -20,4 +20,8 @@
     background-color: var(--color-purple-secondary);
     box-shadow: 0 0 32px var(--color-purple-shadow);
   }
+
+  &:disabled {
+    pointer-events: none;
+  }
 }

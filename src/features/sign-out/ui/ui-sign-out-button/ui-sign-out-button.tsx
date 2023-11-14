@@ -18,13 +18,14 @@ export const UISignOutButton: FC<IProps> = ({ onSignOut, isLoading }) => {
       onClick={onSignOut}
       disabled={isLoading}
     >
-      {isLoading && (
-        <div className={styles.spinner}>
-          <UIButtonSpinner />
-        </div>
+      {isLoading ? (
+        <UIButtonSpinner />
+      ) : (
+        <>
+          <div className={styles.icon}>{ICONS['logout']}</div>
+          <p className={styles.text}>Sign Out</p>
+        </>
       )}
-      <div className={styles.icon}>{ICONS['logout']}</div>
-      <p className={styles.text}>Sign Out</p>
     </UIPrimaryButton>
   );
 };

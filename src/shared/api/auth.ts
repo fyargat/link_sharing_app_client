@@ -16,17 +16,13 @@ export const signUp = async (data: IAuthBody) => {
 };
 
 export const signIn = async (data: IAuthBody) => {
-  try {
-    const response = await createInstance({
-      url: 'auth/sign-in',
-      method: 'post',
-      data,
-    });
+  const response = await createInstance({
+    url: 'auth/sign-in',
+    method: 'post',
+    data,
+  });
 
-    return response;
-  } catch (error) {
-    console.log('error', error);
-  }
+  return response;
 };
 
 export const signOut = async () => {

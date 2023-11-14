@@ -1,7 +1,8 @@
 import { BaseSyntheticEvent, FC } from 'react';
-import { UseFormRegister } from 'react-hook-form';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 
 import { ICONS } from '@/src/shared/config/icons';
+import { UIButtonSpinner } from '@/src/shared/ui/ui-button-spinner';
 import { UISecondaryButton } from '@/src/shared/ui/ui-secondary-button';
 import { UITextField } from '@/src/shared/ui/ui-text-field';
 
@@ -13,9 +14,16 @@ interface IProps {
   onSubmit: (
     e?: BaseSyntheticEvent<object, object, object> | undefined,
   ) => Promise<void>;
+  isLoading: boolean;
+  errors: FieldErrors<ISignInForm>;
 }
 
-export const UISignInForm: FC<IProps> = ({ onSubmit, register }) => {
+export const UISignInForm: FC<IProps> = ({
+  errors,
+  onSubmit,
+  register,
+  isLoading,
+}) => {
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={onSubmit}>
@@ -23,12 +31,10 @@ export const UISignInForm: FC<IProps> = ({ onSubmit, register }) => {
           <UITextField
             icon={ICONS['email']}
             label='Email'
-            isInvalid={false}
-            errorText='Invalid'
+            error={errors.email}
             inputProps={{
               defaultValue: '',
               placeholder: 'e.g. john@doe.com',
-              type: 'email',
               ...register('email'),
             }}
           />
@@ -37,8 +43,7 @@ export const UISignInForm: FC<IProps> = ({ onSubmit, register }) => {
           <UITextField
             icon={ICONS['password']}
             label='Password'
-            isInvalid={false}
-            errorText='Invalid'
+            error={errors.password}
             inputProps={{
               defaultValue: '',
               placeholder: 'Enter your password',
@@ -48,8 +53,12 @@ export const UISignInForm: FC<IProps> = ({ onSubmit, register }) => {
           />
         </div>
         <div>
-          <UISecondaryButton className={styles.button} type='submit'>
-            Login
+          <UISecondaryButton
+            className={styles.button}
+            disabled={isLoading}
+            type='submit'
+          >
+            {isLoading ? <UIButtonSpinner /> : 'Login'}
           </UISecondaryButton>
         </div>
       </form>

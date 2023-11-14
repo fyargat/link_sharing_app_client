@@ -1,12 +1,19 @@
 @import '@/src/shared/styles/mixins';
 
 .button {
+  @include flex-center;
+
+  @include breakpoint(tablet) {
+    min-width: 7.75rem;
+  }
+
   position: relative;
 
   display: flex;
   gap: 0.5rem;
   align-items: center;
 
+  min-width: 3.625rem;
   padding-inline: 1rem;
 
   color: var(--color-white-primary);
@@ -25,17 +32,6 @@
 
 .text {
   @include breakpoint(tablet) {
-    display: block;
-  }
-
-  display: none;
-}
-
-.spinner {
-  @include breakpoint(tablet) {
-    position: absolute;
-    right: 30px;
-    bottom: -10px;
     display: block;
   }
 

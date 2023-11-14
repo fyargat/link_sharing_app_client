@@ -1,33 +1,50 @@
-import { useMutation } from '@tanstack/react-query';
-import { useRouter } from 'next/navigation';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
 
-import { signIn } from '@/src/shared/api/auth';
-import { Route } from '@/src/shared/config/routes';
+import { useSignInMutation } from '@/src/entities/auth';
 
 export interface ISignInForm {
   email: string;
   password: string;
 }
 
+const regex =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+const validationSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email('Invalid Email')
+    .required("Can't be empty")
+    .matches(regex, 'Invalid Email'),
+  password: yup.string().min(8, 'Minimum 8 symbols').required("Can't be empty"),
+});
+
 export function useSignInForm() {
-  const router = useRouter();
+  const { mutate: signIn, isPending: isLoading } = useSignInMutation();
 
-  const { register, handleSubmit } = useForm<ISignInForm>();
-
-  const signUpMutation = useMutation({
-    mutationFn: signIn,
-    onSuccess() {
-      void router.push(Route.Home);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ISignInForm>({
+    resolver: yupResolver(validationSchema),
+    mode: 'onSubmit',
+    defaultValues: {
+      email: '',
+      password: '',
     },
   });
 
-  const errorMessage = signUpMutation.error ? 'Sign up failed' : undefined;
+  const onSubmit = (data: ISignInForm) => {
+    signIn(data);
+  };
 
   return {
     register,
-    errorMessage,
-    onSubmit: handleSubmit((data) => signUpMutation.mutate(data)),
-    isLoading: signUpMutation.isPending,
+    onSubmit: handleSubmit(onSubmit),
+    isLoading,
+    errors,
   };
 }
