@@ -9,7 +9,7 @@ export interface ISignInForm {
   password: string;
 }
 
-const regex =
+const emailRegex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const validationSchema = yup.object().shape({
@@ -17,7 +17,7 @@ const validationSchema = yup.object().shape({
     .string()
     .email('Invalid Email')
     .required("Can't be empty")
-    .matches(regex, 'Invalid Email'),
+    .matches(emailRegex, 'Invalid Email'),
   password: yup.string().min(8, 'Minimum 8 symbols').required("Can't be empty"),
 });
 

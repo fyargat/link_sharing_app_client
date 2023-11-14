@@ -15,9 +15,7 @@ interface IProps {
 const Header = () => {
   return (
     <header className={styles.header}>
-      <Link href={Route.Home}>
-        <UILogo isFull />
-      </Link>
+      <UILogo isFull />
       <Link className={styles.signUpLink} href={Route.SignUp}>
         Create Your Own!
       </Link>

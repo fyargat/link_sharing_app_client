@@ -6,7 +6,14 @@ import { UISignUpForm } from './ui/ui-sign-up-form';
 interface IProps {}
 
 export const SignUpForm: React.FC<IProps> = () => {
-  const { register, onSubmit } = useSignUpForm();
+  const { register, onSubmit, isLoading, errors } = useSignUpForm();
 
-  return <UISignUpForm register={register} onSubmit={onSubmit} />;
+  return (
+    <UISignUpForm
+      register={register}
+      onSubmit={onSubmit}
+      isLoading={isLoading}
+      errors={errors}
+    />
+  );
 };

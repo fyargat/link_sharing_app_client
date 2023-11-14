@@ -2,14 +2,12 @@ import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { toast } from 'react-toastify';
 
-import { useProfileInfoQuery } from '@/src/entities/profile';
-import { useProfileInfoMutation } from '@/src/entities/profile/queries';
+import { useProfile } from '@/src/entities/profile';
 import { useEdgeStore } from '@/src/shared/lib/edgestore';
 
 export const useAvatarDropzone = () => {
   const { edgestore } = useEdgeStore();
-  const { data: profile } = useProfileInfoQuery();
-  const { mutate: updateProfileInfo } = useProfileInfoMutation();
+  const { profile, updateProfile } = useProfile();
   const [isLoading, setIsLoading] = useState(false);
 
   const upload = async (file: File) => {
@@ -33,7 +31,7 @@ export const useAvatarDropzone = () => {
         .then((response) => {
           response &&
             response?.url &&
-            updateProfileInfo({
+            updateProfile({
               avatar: response.url,
             });
           toast.success('Profile picture was successfully changed!');

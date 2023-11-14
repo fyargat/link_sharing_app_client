@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { FC } from 'react';
 
 import { useSessionQuery } from '@/src/entities/session/queries';
@@ -12,8 +12,6 @@ interface IProps {
 }
 
 export const ProtectedPage: FC<IProps> = ({ children }) => {
-  const router = useRouter();
-
   const { isError, isLoading } = useSessionQuery();
 
   if (isLoading) {
@@ -21,8 +19,7 @@ export const ProtectedPage: FC<IProps> = ({ children }) => {
   }
 
   if (isError) {
-    router.replace(Route.SignIn);
-    return;
+    redirect(Route.SignIn);
   }
 
   return children;

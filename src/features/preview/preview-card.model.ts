@@ -1,11 +1,11 @@
-import { useProfileInfoQuery } from '@/src/entities/profile';
+import { useProfile } from '@/src/entities/profile';
 import { useShareLink } from '@/src/entities/share-link';
 import { IUserView } from '@/src/shared/types';
 
 export const usePreviewCard = () => {
   const { links } = useShareLink();
 
-  const { data: profile } = useProfileInfoQuery();
+  const { profile } = useProfile();
 
   const { firstName = '', lastName = '', email = '', avatar } = profile ?? {};
 

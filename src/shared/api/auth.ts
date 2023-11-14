@@ -2,17 +2,13 @@ import { createInstance } from './api-instance';
 import { IAuthBody } from './types';
 
 export const signUp = async (data: IAuthBody) => {
-  try {
-    const response = await createInstance({
-      url: 'auth/sign-up',
-      method: 'post',
-      data,
-    });
+  const response = await createInstance({
+    url: 'auth/sign-up',
+    method: 'post',
+    data,
+  });
 
-    return response;
-  } catch (error) {
-    console.log('error', error);
-  }
+  return response;
 };
 
 export const signIn = async (data: IAuthBody) => {
@@ -26,27 +22,19 @@ export const signIn = async (data: IAuthBody) => {
 };
 
 export const signOut = async () => {
-  try {
-    const response = await createInstance({
-      url: 'auth/sign-out',
-      method: 'post',
-    });
+  const response = await createInstance({
+    url: 'auth/sign-out',
+    method: 'post',
+  });
 
-    return response;
-  } catch (error) {
-    console.log('error', error);
-  }
+  return response;
 };
 
 export const fetchSessionInfo = async () => {
-  try {
-    const response = await createInstance({
-      url: 'auth/session',
-      method: 'get',
-    });
+  const response = await createInstance({
+    url: 'auth/session',
+    method: 'get',
+  });
 
-    return response;
-  } catch (error) {
-    console.log('error', error);
-  }
+  return response;
 };

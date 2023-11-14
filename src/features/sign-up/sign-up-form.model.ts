@@ -1,34 +1,59 @@
-import { useMutation } from '@tanstack/react-query';
-import { useRouter } from 'next/navigation';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
 
-import { signUp } from '@/src/shared/api/auth';
-import { Route } from '@/src/shared/config/routes';
+import { useSignUpMutation } from '@/src/entities/auth';
 
-export interface ISignInForm {
+export interface ISignUpForm {
   email: string;
   password: string;
   confirmPassword: string;
 }
 
-export function useSignUpForm() {
-  const router = useRouter();
+const emailRegex =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  const { register, handleSubmit } = useForm<ISignInForm>();
+const validationSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email('Invalid Email')
+    .required("Can't be empty")
+    .matches(emailRegex, 'Invalid Email'),
+  password: yup.string().min(8, 'Minimum 8 symbols').required("Can't be empty"),
+  confirmPassword: yup
+    .string()
+    .required('Please confirm your password.')
+    .oneOf([yup.ref('password')], 'Passwords must match'),
+});
 
-  const signUpMutation = useMutation({
-    mutationFn: signUp,
-    onSuccess() {
-      void router.push(Route.Home);
+export const useSignUpForm = () => {
+  const { mutate: signUp, isPending: isLoading } = useSignUpMutation();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ISignUpForm>({
+    resolver: yupResolver(validationSchema),
+    mode: 'onSubmit',
+    defaultValues: {
+      email: '',
+      password: '',
+      confirmPassword: '',
     },
   });
 
-  const errorMessage = signUpMutation.error ? 'Sign up failed' : undefined;
+  const onSubmit = ({ email, password }: ISignUpForm) => {
+    signUp({
+      email,
+      password,
+    });
+  };
 
   return {
     register,
-    errorMessage,
-    onSubmit: handleSubmit((data) => signUpMutation.mutate(data)),
-    isLoading: signUpMutation.isPending,
+    onSubmit: handleSubmit(onSubmit),
+    isLoading,
+    errors,
   };
-}
+};

@@ -1,1 +1,5 @@
-export { useSignInMutation, useSignOutMutation } from './auth.queries';
+export {
+  useSignInMutation,
+  useSignOutMutation,
+  useSignUpMutation,
+} from './auth.queries';
