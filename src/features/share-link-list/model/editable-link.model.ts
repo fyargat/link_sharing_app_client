@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import debounce from 'lodash/debounce';
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import * as yup from 'yup';
 
 import {
@@ -61,6 +62,7 @@ export const useEditableLink = (link: IShareLink) => {
 
   const handleShareLinkRemove = () => {
     removeShareLink(link.id);
+    toast.error('Link has been deleted');
   };
 
   return {

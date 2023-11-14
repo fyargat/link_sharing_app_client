@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 import { useShareLink } from '@/src/entities/share-link';
 
 export const useNewLink = () => {
@@ -9,6 +11,7 @@ export const useNewLink = () => {
 
   const handleShareLinkCreate = async () => {
     await createShareLink();
+    toast.success('New link has been created');
   };
 
   return {

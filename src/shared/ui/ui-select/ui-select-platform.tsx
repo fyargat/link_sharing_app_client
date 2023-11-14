@@ -15,13 +15,11 @@ export const UISelectPlatform: FC<IProps> = ({
   platformId,
   onSelectPlatform,
 }) => {
-  const { platform, isVisible, onSelect, onToggleVisible } = useSelectPlatform(
-    platformId,
-    onSelectPlatform,
-  );
+  const { platform, isVisible, onSelect, onToggleVisible, containerRef } =
+    useSelectPlatform(platformId, onSelectPlatform);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={containerRef}>
       <p className={styles.label}>Platform</p>
 
       <div className={styles.select}>
