@@ -7,11 +7,11 @@ interface IProps {
   className?: string;
 }
 
-export const UISkeleton: FC<IProps> = ({ className }) => {
+export const UISkeleton: FC<IProps> = ({ className = styles.default }) => {
   return (
     <div
       className={cn(styles.container, {
-        [className as string]: className,
+        [className]: className,
       })}
     />
   );

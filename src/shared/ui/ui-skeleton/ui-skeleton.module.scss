@@ -1,5 +1,13 @@
 @import '@/src/shared/styles/mixins';
 
+$size: 100px;
+
 .container {
   background-color: var(--color-grey);
+}
+
+.default {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
 }
