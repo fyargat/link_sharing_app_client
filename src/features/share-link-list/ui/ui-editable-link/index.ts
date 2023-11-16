@@ -1,1 +1,1 @@
-export { UIEditableLink } from './ui-editable-link';
+export { UIEditableLink, UIEditableShareLink } from './ui-editable-link';

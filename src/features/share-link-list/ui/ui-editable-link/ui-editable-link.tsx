@@ -15,7 +15,7 @@ interface IProps {
   order: number;
 }
 
-const UIEditableShareLink: FC<IProps> = ({ link, order }) => {
+export const UIEditableShareLink: FC<IProps> = ({ link, order }) => {
   const { onRemove, onSelectPlatform, onChange, register, errors } =
     useEditableLink(link);
 
