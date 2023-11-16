@@ -14,6 +14,13 @@ const meta = {
   tags: ['autodocs'],
   args: {},
   argTypes: {},
+  decorators: [
+    (Story) => (
+      <div style={{ width: 300 }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof UIShareLink>;
 
 export default meta;
