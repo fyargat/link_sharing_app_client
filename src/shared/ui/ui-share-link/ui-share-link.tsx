@@ -11,8 +11,6 @@ interface IProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
 }
 
 export const UIShareLink: FC<IProps> = ({ link, ...props }) => {
-  console.log('link', link);
-
   const { colors, text, icon } = platformMap.get(link.platformId)!;
 
   return (

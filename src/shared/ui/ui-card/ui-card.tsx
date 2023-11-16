@@ -34,28 +34,32 @@ export const UICard: FC<IProps> = ({
             </div>
           )}
         </div>
-        <div className={styles.userInfo}>
-          {fullName ? (
-            <p title={fullName} className={styles.fullName}>
-              {fullName}
-            </p>
-          ) : null}
-          {email ? (
-            <p title={email} className={styles.email}>
-              {email}
-            </p>
-          ) : null}
-        </div>
+        {Boolean(fullName || email) && (
+          <div className={styles.userInfo}>
+            {Boolean(fullName) && (
+              <p title={fullName} className={styles.fullName}>
+                {fullName}
+              </p>
+            )}
+            {Boolean(email) && (
+              <p title={email} className={styles.email}>
+                {email}
+              </p>
+            )}
+          </div>
+        )}
       </header>
-      <div className={styles.body}>
-        <ul className={styles.list}>
-          {links.map((link, index) => (
-            <li key={index}>
-              <UIShareLink link={link} />
-            </li>
-          ))}
-        </ul>
-      </div>
+      {Boolean(links.length) && (
+        <div className={styles.body}>
+          <ul className={styles.list}>
+            {links.map((link, index) => (
+              <li key={index}>
+                <UIShareLink link={link} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
