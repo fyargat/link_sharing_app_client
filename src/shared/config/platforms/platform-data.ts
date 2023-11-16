@@ -47,12 +47,6 @@ export const PLATFORMS: IPlatform[] = [
     icon: PLATFORM_ICONS[Platform.Twitch],
   },
   {
-    id: Platform.DevTo,
-    text: 'Dev.to',
-    colors: PLATFORM_COLORS[Platform.DevTo],
-    icon: PLATFORM_ICONS[Platform.DevTo],
-  },
-  {
     id: Platform.Codewars,
     text: 'Codewars',
     colors: PLATFORM_COLORS[Platform.Codewars],
