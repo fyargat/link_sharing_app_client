@@ -1,7 +1,8 @@
+import type { Meta, StoryObj } from '@storybook/react';
+
 import { ICONS } from '@/src/shared/config/icons';
 import { Route } from '@/src/shared/config/routes';
 import { UINavbarLink } from '@/src/shared/ui/ui-navbar-link';
-import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
   title: 'UI/NavbarLink',
@@ -10,6 +11,13 @@ const meta = {
   tags: ['autodocs'],
   args: {},
   argTypes: {},
+  decorators: [
+    (Story) => (
+      <div style={{ width: 150 }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof UINavbarLink>;
 
 export default meta;

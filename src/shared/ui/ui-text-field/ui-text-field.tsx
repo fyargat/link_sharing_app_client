@@ -2,6 +2,7 @@ import cn from 'classnames';
 import { FC, FocusEvent, InputHTMLAttributes, PropsWithRef } from 'react';
 import { FieldError } from 'react-hook-form';
 
+import { TextFieldDirection } from './ui-text-field.config';
 import styles from './ui-text-field.module.scss';
 
 export interface IInputClassName {
@@ -11,14 +12,10 @@ export interface IInputClassName {
   labelText?: string;
 }
 
-export enum Direction {
-  Column = 'column',
-  Row = 'row',
-}
 interface IProps {
   label?: string;
   icon?: React.ReactNode;
-  direction?: Direction;
+  direction?: TextFieldDirection;
   isSelectText?: boolean;
   classNames?: IInputClassName;
   inputProps?: PropsWithRef<InputHTMLAttributes<HTMLInputElement>>;
@@ -28,7 +25,7 @@ interface IProps {
 export const UITextField: FC<IProps> = ({
   label,
   icon,
-  direction = Direction.Column,
+  direction = TextFieldDirection.Column,
   isSelectText = false,
   classNames = {},
   inputProps,
@@ -44,14 +41,14 @@ export const UITextField: FC<IProps> = ({
     <div className={styles.container}>
       <label
         className={cn(styles.label, {
-          [styles.labelRow]: direction === Direction.Row,
+          [styles.labelRow]: direction === TextFieldDirection.Row,
         })}
       >
         {label && (
           <p
             className={cn(styles.labelText, {
               [styles.labelTextInvalid]: error,
-              [styles.labelTextRow]: direction === Direction.Row,
+              [styles.labelTextRow]: direction === TextFieldDirection.Row,
               [classNames?.labelText as string]: classNames.labelText,
             })}
           >
@@ -61,7 +58,7 @@ export const UITextField: FC<IProps> = ({
 
         <div
           className={cn(styles.inputContainer, {
-            [styles.inputContainerRow]: direction === Direction.Row,
+            [styles.inputContainerRow]: direction === TextFieldDirection.Row,
           })}
         >
           {icon && <div className={styles.icon}>{icon}</div>}

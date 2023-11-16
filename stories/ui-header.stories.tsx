@@ -18,6 +18,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
+    right: <button>Right</button>,
     navbar: <UINavbar route={Route.Profile} />,
   },
 };

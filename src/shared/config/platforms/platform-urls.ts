@@ -14,7 +14,6 @@ export const PLATFORM_URLS: PlatformUrlType = {
   [Platform.Youtube]: 'https://www.youtube.com/',
   [Platform.Facebook]: 'https://www.facebook.com/',
   [Platform.Twitch]: 'https://www.twitch.tv/',
-  [Platform.DevTo]: 'https://dev.to/',
   [Platform.Codewars]: 'https://www.codewars.com/',
   [Platform.Codepen]: 'https://codepen.io/',
   [Platform.Gitlab]: 'https://gitlab.com/',

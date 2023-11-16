@@ -35,10 +35,6 @@ export const PLATFORM_COLORS: { [key in Platform]: IPlatformColor } = {
     color: '#fff',
     backgroundColor: '#ee3fc8',
   },
-  [Platform.DevTo]: {
-    color: '#fff',
-    backgroundColor: '#333333',
-  },
   [Platform.Codewars]: {
     color: '#fff',
     backgroundColor: '#8a1a50',

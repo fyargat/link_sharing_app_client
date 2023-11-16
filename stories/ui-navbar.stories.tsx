@@ -1,6 +1,7 @@
+import type { Meta, StoryObj } from '@storybook/react';
+
 import { UINavbar } from '@/src/features/navbar';
 import { Route } from '@/src/shared/config/routes';
-import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
   title: 'UI/Navbar',

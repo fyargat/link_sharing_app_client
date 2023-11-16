@@ -7,7 +7,6 @@ export enum Platform {
   Youtube,
   Facebook,
   Twitch,
-  DevTo,
   Codewars,
   Codepen,
   Gitlab,

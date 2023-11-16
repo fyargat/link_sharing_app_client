@@ -1,10 +1,11 @@
-import {
-  PLATFORMS,
-  Platform,
-  platformMap,
-} from '@/src/shared/config/platforms';
-import { UIShareLink } from '@/src/shared/ui/ui-share-link';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import { Platform } from '@/src/shared/config/platforms';
+import { UIShareLink } from '@/src/shared/ui/ui-share-link';
+
+const getLink = (platformId: Platform) => {
+  return { id: 1, ownerId: 1, platformId, text: '' };
+};
 
 const meta = {
   title: 'UI/ShareLink',
@@ -20,18 +21,18 @@ type Story = StoryObj<typeof meta>;
 
 export const Base: Story = {
   args: {
-    link: { platform: PLATFORMS[0], href: '' },
+    link: getLink(Platform.Codepen),
   },
 };
 
 export const FrontedMentor: Story = {
   args: {
-    link: { platform: PLATFORMS[1], href: '' },
+    link: getLink(Platform.FrontendMentor),
   },
 };
 
 export const StackOverflow: Story = {
   args: {
-    link: { platform: platformMap.get(Platform.StackOverflow)!, href: '' },
+    link: getLink(Platform.StackOverflow),
   },
 };

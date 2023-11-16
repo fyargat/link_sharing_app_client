@@ -1,19 +1,8 @@
 import cn from 'classnames';
 import { FC } from 'react';
 
+import { SIZES, SpinnerSize } from './ui-spinner.config';
 import styles from './ui-spinner.module.scss';
-
-export enum SpinnerSize {
-  Small = 'sm',
-  Medium = 'md',
-  Large = 'lg',
-}
-
-const SIZES = {
-  [SpinnerSize.Small]: 10,
-  [SpinnerSize.Medium]: 20,
-  [SpinnerSize.Large]: 30,
-};
 
 interface IProps {
   size?: SpinnerSize;
@@ -24,7 +13,7 @@ export const UISpinner: FC<IProps> = ({
   className = '',
   size = SpinnerSize.Medium,
 }) => {
-  const sizeNumber = SIZES[size];
+  const sizeNumber = SIZES[size] ?? SIZES[SpinnerSize.Medium];
 
   return (
     <div

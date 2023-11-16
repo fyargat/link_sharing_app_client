@@ -1,38 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { UIPhoneTemplate } from '@/src/features/phone-template';
-import { Platform, platformMap } from '@/src/shared/config/platforms';
+import { Platform } from '@/src/shared/config/platforms';
 import { IShareLink } from '@/src/shared/types';
 
+const getLink = (platformId: Platform, id: number) => {
+  return { id, ownerId: 1, platformId, text: '' };
+};
+
 const links: IShareLink[] = [
-  {
-    platform: platformMap.get(Platform.Facebook)!,
-    href: 'https://facebook.com/test',
-  },
-  {
-    platform: platformMap.get(Platform.Gitlab)!,
-    href: 'https://facebook.com/test',
-  },
-  {
-    platform: platformMap.get(Platform.LinkedIn)!,
-    href: 'https://facebook.com/test',
-  },
-  {
-    platform: platformMap.get(Platform.FrontendMentor)!,
-    href: 'https://facebook.com/test',
-  },
-  {
-    platform: platformMap.get(Platform.Twitch)!,
-    href: 'https://facebook.com/test',
-  },
-  {
-    platform: platformMap.get(Platform.DevTo)!,
-    href: 'https://facebook.com/test',
-  },
-  {
-    platform: platformMap.get(Platform.Hashnode)!,
-    href: 'https://facebook.com/test',
-  },
+  getLink(Platform.Facebook, 1),
+  getLink(Platform.Gitlab, 1),
+  getLink(Platform.LinkedIn, 1),
+  getLink(Platform.FrontendMentor, 1),
+  getLink(Platform.Twitch, 1),
+  getLink(Platform.Hashnode, 1),
+  getLink(Platform.Gitlab, 1),
+  getLink(Platform.Youtube, 1),
 ];
 
 const user = {

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Direction, UITextField } from '@/src/shared/ui/ui-text-field';
+import { TextFieldDirection, UITextField } from '@/src/shared/ui/ui-text-field';
 
 import { useProfileFields } from '../../model';
 import styles from './ui-profile-fields.module.scss';
@@ -13,7 +13,7 @@ export const UIProfileFields: FC<IProps> = () => {
   return (
     <div className={styles.container}>
       <UITextField
-        direction={Direction.Row}
+        direction={TextFieldDirection.Row}
         label='First name*'
         classNames={{ input: styles.field, labelText: styles.label }}
         error={errors.firstName}
@@ -28,7 +28,7 @@ export const UIProfileFields: FC<IProps> = () => {
       />
 
       <UITextField
-        direction={Direction.Row}
+        direction={TextFieldDirection.Row}
         label='Last name*'
         error={errors.lastName}
         classNames={{ input: styles.field, labelText: styles.label }}
