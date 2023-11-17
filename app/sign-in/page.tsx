@@ -1,1 +1,1 @@
-export { SignIn as default } from '@/src/pages/sign-in-page';
+export { SignIn as default } from '@/src/views/sign-in-page';

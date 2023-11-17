@@ -3,9 +3,9 @@ import { ISharedInfoData } from './sharee-info.types';
 export const getSharedInfo = async (
   id: string,
 ): Promise<ISharedInfoData | null> => {
-  console.log('getSharedInfo id', id);
-
-  const response = await fetch(`http://localhost:3001/shared-info/${id}`);
+  const response = await fetch(`http://api:3000/api/shared-info/${id}`, {
+    cache: 'no-store',
+  });
 
   if (!response.ok) {
     return null;

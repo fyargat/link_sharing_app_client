@@ -1,1 +1,1 @@
-export { PreviewPage as default } from '@/src/pages/preview-page';
+export { PreviewPage as default } from '@/src/views/preview-page';

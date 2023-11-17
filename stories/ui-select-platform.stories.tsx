@@ -1,12 +1,17 @@
-import { UISelectPlatform } from '@/src/shared/ui/ui-select';
 import { Meta, type StoryObj } from '@storybook/react';
+
+import { Platform } from '@/src/shared/config/platforms';
+import { UISelectPlatform } from '@/src/shared/ui/ui-select';
 
 const meta = {
   title: 'UI/SelectPlatform',
   component: UISelectPlatform,
   parameters: {},
   tags: ['autodocs'],
-  args: {},
+  args: {
+    platformId: Platform.Codepen,
+    onSelectPlatform: (id) => console.log('id', id),
+  },
   argTypes: {},
   decorators: [
     (Story) => (

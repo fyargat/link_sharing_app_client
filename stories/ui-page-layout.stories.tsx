@@ -44,7 +44,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    header: <UIHeader navbar={<UINavbar route={Route.Home} />} />,
+    header: (
+      <UIHeader navbar={<UINavbar route={Route.Home} />} right={<p>Right</p>} />
+    ),
     left: (
       <UIPhoneTemplate
         links={[]}

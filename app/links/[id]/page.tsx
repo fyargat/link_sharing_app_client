@@ -1,1 +1,1 @@
-export { Links as default } from '@/src/pages/links-page';
+export { Links as default } from '@/src/views/links-page';

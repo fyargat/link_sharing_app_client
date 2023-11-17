@@ -20,6 +20,7 @@ const validationSchema = yup.object().shape({
 export const useProfileFields = () => {
   const { profile, updateProfile } = useProfile();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const updateProfileInfo = useCallback(debounce(updateProfile, 300), []);
 
   const {

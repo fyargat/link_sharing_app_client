@@ -1,11 +1,18 @@
-version: "3.8"
+version: '3.8'
+
 services:
-  app:
-    build:
-      context: ./
-      target: runner
+  client:
+    image: link-sharing-app-client5:latest
+    # temp
     ports:
-      - "3000:3000"
+      - target: 3000
+        published: 3001
+        mode: host
     environment:
       NODE_ENV: production
       NEXT_TELEMETRY_DISABLED: 1
+# temp
+# networks:
+#   default:
+#     name: portfolio_network
+#     external: true

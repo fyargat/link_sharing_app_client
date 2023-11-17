@@ -18,5 +18,3 @@ export const Home = () => {
     </ProtectedPage>
   );
 };
-
-// export default protectedPage(Home);

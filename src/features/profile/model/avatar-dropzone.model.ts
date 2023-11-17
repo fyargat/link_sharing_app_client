@@ -5,10 +5,8 @@ import { toast } from 'react-toastify';
 import { useProfile } from '@/src/entities/profile';
 import { useEdgeStore } from '@/src/shared/lib/edgestore';
 
-export const useAvatarDropzone = () => {
+const useUpload = () => {
   const { edgestore } = useEdgeStore();
-  const { profile, updateProfile } = useProfile();
-  const [isLoading, setIsLoading] = useState(false);
 
   const upload = async (file: File) => {
     try {
@@ -21,27 +19,40 @@ export const useAvatarDropzone = () => {
     }
   };
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    const file = acceptedFiles[0];
+  return {
+    upload,
+  };
+};
 
-    if (file) {
-      setIsLoading(true);
+export const useAvatarDropzone = () => {
+  const { upload } = useUpload();
+  const { profile, updateProfile } = useProfile();
+  const [isLoading, setIsLoading] = useState(false);
 
-      upload(file)
-        .then((response) => {
-          response &&
-            response?.url &&
-            updateProfile({
-              avatar: response.url,
-            });
-          toast.success('Profile picture was successfully changed!');
-        })
-        .catch((error) => console.log('error', error))
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
-  }, []);
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      const file = acceptedFiles[0];
+
+      if (file) {
+        setIsLoading(true);
+
+        upload(file)
+          .then((response) => {
+            response &&
+              response?.url &&
+              updateProfile({
+                avatar: response.url,
+              });
+            toast.success('Profile picture was successfully changed!');
+          })
+          .catch((error) => console.log('error', error))
+          .finally(() => {
+            setIsLoading(false);
+          });
+      }
+    },
+    [updateProfile, upload],
+  );
 
   const { getRootProps, getInputProps } = useDropzone({
     maxFiles: 1,

@@ -25,6 +25,7 @@ const validationSchema = yup.object().shape({
 export const useEditableLink = (link: IShareLink) => {
   const { mutate: removeShareLink } = useShareLinkRemoveMutation();
   const { mutate: updateShareLink } = useShareLinkUpdateMutation();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debounceUpdateShareLink = useCallback(
     debounce(updateShareLink, 500),
     [],

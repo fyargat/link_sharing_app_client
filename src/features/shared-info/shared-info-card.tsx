@@ -7,6 +7,7 @@ interface IProps {
 }
 
 export const SharedInfoCard: React.FC<IProps> = async ({ id }) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { user, links } = await useShareInfoCard(id);
 
   return <UICard user={user} links={links} />;
