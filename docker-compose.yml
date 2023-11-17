@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   client:
-    image: link-sharing-app-client5:latest
+    image: ghcr.io/fyargat/link-sharing-app-client:latest
     # temp
     ports:
       - target: 3000
@@ -11,8 +11,8 @@ services:
     environment:
       NODE_ENV: production
       NEXT_TELEMETRY_DISABLED: 1
-# temp
-# networks:
-#   default:
-#     name: portfolio_network
-#     external: true
+
+networks:
+  default:
+    name: portfolio_network
+    external: true
