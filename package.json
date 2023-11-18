@@ -16,8 +16,7 @@
     "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "postversion": "git push && git push --tags",
-    "chromatic": "npx chromatic --project-token=chpt_a94ef748b51b4c9"
+    "postversion": "git push && git push --tags"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",
@@ -58,7 +57,6 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
-    "chromatic": "^9.1.0",
     "eslint": "^8.51.0",
     "eslint-config-next": "13.5.4",
     "eslint-config-prettier": "^9.0.0",
