@@ -6,7 +6,7 @@ services:
     # temp
     ports:
       - target: 3000
-        published: 3001
+        published: 3000
         mode: host
     environment:
       NODE_ENV: production
@@ -15,7 +15,8 @@ services:
       placement:
         constraints:
           - 'node.role==worker'
-# networks:
-#   default:
-#     name: portfolio_network
-#     external: true
+
+networks:
+  default:
+    name: portfolio_network
+    external: true
