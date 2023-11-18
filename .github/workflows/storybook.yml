@@ -1,5 +1,5 @@
 # Workflow name
-name: Build and Publish Storybook to GitHub Pages
+name: 'Chromatic Deployment'
 
 on:
   # Event for the workflow to run on
@@ -7,29 +7,21 @@ on:
     branches:
       - 'storybook' # Replace with the branch you want to deploy from
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 # List of jobs
 jobs:
-  deploy:
+  test:
+    # Operating System
     runs-on: ubuntu-latest
     # Job steps
     steps:
-      # Manual Checkout
       - uses: actions/checkout@v3
-
-      # Set up Node
-      - uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
-
-      #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
-      - uses: bitovi/github-actions-storybook-to-github-pages@v1.0.1
+          fetch-depth: 0
+      - run: yarn
+        #👇 Adds Chromatic as a step in the workflow
+      - uses: chromaui/action@v1
+        # Options required for Chromatic's GitHub Action
         with:
-          install_command: yarn install # default: npm ci
-          build_command: yarn build-storybook # default: npm run build-storybook
-          path: storybook-static # default: dist/storybook
-          checkout: false # default: true
+          #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/en/deploy/ to obtain it
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
