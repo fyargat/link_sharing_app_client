@@ -45,7 +45,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Base: Story = {
   args: {
-    links: links.slice(0, 3),
+    links: links.slice(0, 4),
     linkSkeletons: linkSkeletons.slice(0, 2),
   },
 };

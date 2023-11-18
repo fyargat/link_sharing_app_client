@@ -1,6 +1,6 @@
 {
   "name": "link-sharing-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -73,5 +73,6 @@
     "stylelint-config-standard-scss": "^11.0.0",
     "stylelint-order": "^6.0.3",
     "typescript": "^5"
-  }
+  },
+  "readme": "ERROR: No README data found!"
 }
