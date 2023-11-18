@@ -36,4 +36,8 @@ next-env.d.ts
 
 tasks.md
 
+# env
 .env
+
+# storybook
+/storybook-static
