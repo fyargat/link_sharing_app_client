@@ -25,7 +25,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://api:3000/api/:path*',
+        destination: 'http://link-sharing-app_api:3000/api/:path*',
       },
     ];
   },
