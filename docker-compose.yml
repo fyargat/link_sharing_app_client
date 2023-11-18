@@ -3,11 +3,6 @@ version: '3.8'
 services:
   client:
     image: ghcr.io/fyargat/link-sharing-app-client:latest
-    # temp
-    ports:
-      - target: 3000
-        published: 3000
-        mode: host
     environment:
       NODE_ENV: production
       NEXT_TELEMETRY_DISABLED: 1
