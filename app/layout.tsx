@@ -1,3 +1,4 @@
+import Favicon from '@/public/favicon.ico';
 import cn from 'classnames';
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
@@ -12,6 +13,7 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: 'Link Sharing App',
   description: 'Link Sharing App',
+  icons: [{ rel: 'icon', type: 'image/x-icon', url: Favicon.src }],
 };
 
 export default function RootLayout({
