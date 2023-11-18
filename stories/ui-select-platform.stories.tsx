@@ -10,9 +10,8 @@ const meta = {
   tags: ['autodocs'],
   args: {
     platformId: Platform.Codepen,
-    onSelectPlatform: (id) => console.log('id', id),
   },
-  argTypes: {},
+  argTypes: { onSelectPlatform: { action: 'clicked' } },
   decorators: [
     (Story) => (
       <div style={{ height: '100vh' }}>

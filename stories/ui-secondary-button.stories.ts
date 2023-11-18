@@ -1,5 +1,6 @@
-import { UISecondaryButton } from '@/src/shared/ui/ui-secondary-button';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import { UISecondaryButton } from '@/src/shared/ui/ui-secondary-button';
 
 const meta = {
   title: 'UI/SecondaryButton',
