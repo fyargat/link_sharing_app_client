@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import debounce from 'lodash/debounce';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
@@ -18,22 +18,20 @@ const validationSchema = yup.object().shape({
 });
 
 export const useProfileFields = () => {
-  const { profile, updateProfile } = useProfile();
+  const { profile, updateProfile, isSuccess } = useProfile();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const updateProfileInfo = useCallback(debounce(updateProfile, 300), []);
+  const updateProfileInfo = useCallback(debounce(updateProfile, 700), []);
+  const isFieldsValueUpdated = useRef<boolean>(false);
 
   const {
     register,
     formState: { errors },
+    setValue,
   } = useForm<IProfileForm>({
     resolver: yupResolver(validationSchema),
     mode: 'onChange',
     defaultValues: {
-      firstName: '',
-      lastName: '',
-    },
-    values: {
       firstName: profile?.firstName ?? '',
       lastName: profile?.lastName ?? '',
     },
@@ -49,6 +47,14 @@ export const useProfileFields = () => {
       [prop]: value,
     });
   };
+
+  useEffect(() => {
+    if (isFieldsValueUpdated.current) return;
+    if (!isSuccess) return;
+    setValue('firstName', profile?.firstName ?? '');
+    setValue('lastName', profile?.lastName ?? '');
+    isFieldsValueUpdated.current = true;
+  }, [isSuccess, setValue, profile, isFieldsValueUpdated]);
 
   return {
     onChange: handleChange,
