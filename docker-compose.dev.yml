@@ -1,12 +1,12 @@
-version: "3.8"
+version: '3.8'
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
+  client:
+    image: link-sharing-app-client:latest
     ports:
-      - "3000:3000"
+      - target: 3000
+        published: 3001
+        mode: host
     volumes:
       - .:/app
       - ./node_modules:/app/node_modules
