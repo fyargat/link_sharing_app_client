@@ -22,7 +22,6 @@ export const PLATFORM_URLS: PlatformUrlType = {
 } as const;
 
 export const getPlatformUrlMap = () => {
-  console.log('map');
   const urls = Object.entries(
     PLATFORM_URLS,
   ) as unknown as Entries<PlatformUrlType>;

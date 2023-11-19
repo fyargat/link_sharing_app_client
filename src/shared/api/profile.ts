@@ -10,7 +10,6 @@ export const fetchProfileInfo = async (): Promise<IProfileData | null> => {
     return data;
   } catch (error) {
     return null;
-    console.log('error', error);
   }
 };
 
@@ -26,6 +25,5 @@ export const updateProfileInfo = async (
     return data;
   } catch (error) {
     return null;
-    console.log('error', error);
   }
 };

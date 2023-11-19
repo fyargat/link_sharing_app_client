@@ -15,7 +15,7 @@ const useUpload = () => {
       });
       return response;
     } catch (error) {
-      console.log('error', error);
+      throw new Error('Error when uploading the avatar.');
     }
   };
 
@@ -45,7 +45,9 @@ export const useAvatarDropzone = () => {
               });
             toast.success('Profile picture was successfully changed!');
           })
-          .catch((error) => console.log('error', error))
+          .catch(() => {
+            throw new Error('Error when uploading the avatar.');
+          })
           .finally(() => {
             setIsLoading(false);
           });

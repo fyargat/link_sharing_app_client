@@ -16,7 +16,6 @@ export const fetchShareLinks =
 
       return data;
     } catch (error) {
-      console.log('error', error);
       return null;
     }
   };
@@ -32,7 +31,6 @@ export const createShareLink = async (
     });
     return data;
   } catch (error) {
-    console.log('error', error);
     return null;
   }
 };
@@ -48,7 +46,6 @@ export const updateShareLink = async (
     });
     return data;
   } catch (error) {
-    console.log('error', error);
     return null;
   }
 };
@@ -63,9 +60,6 @@ export const removeShareLink = async (
     });
     return data;
   } catch (error) {
-    console.log('error', error);
     return null;
   }
 };
-
-removeShareLink;
