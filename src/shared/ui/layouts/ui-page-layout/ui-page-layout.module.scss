@@ -1,16 +1,22 @@
 @import '@/src/shared/styles/mixins';
 
 .container {
+  @include breakpoint(tablet) {
+    gap: 5rem;
+  }
+
   @include flex-column;
 
-  gap: 5rem;
+  gap: 2rem;
   min-height: 100vh;
   padding-bottom: 1rem;
 }
 
 .main {
   position: relative;
+
   display: flex;
+  flex: auto;
   gap: 1rem;
   justify-content: space-between;
 }

@@ -1,1 +1,1 @@
-# Link Sharing App
+# Link Sharing App Client
